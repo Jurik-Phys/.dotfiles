@@ -270,8 +270,61 @@ highlight TabLine cterm=none
 " Задаем собственные функции для назначения имен заголовкам табов <--
 
 
-" Настройка отладчика (загрузка плагина, расположение окон)
+" Настройка отладчика (загрузка плагина, расположение окон) --> 
 autocmd FileType c,cc,cpp,h,hpp,s packadd termdebug
 autocmd FileType c,cc,cpp,h,hpp,s cabbrev gdb Termdebug
 let g:termdebug_popup = 0
 let g:termdebug_wide = 1
+" Настройка отладчика (загрузка плагина, расположение окон) <-- 
+
+"""""""""""""""""""""
+" GnuPG Extensions "
+"                  "
+""""""""""""""""""""
+
+" Tell the GnuPG plugin to armor new files.
+let g:GPGPreferArmor=1
+
+" Tell the GnuPG plugin to sign new files.
+let g:GPGPreferSign=1
+
+augroup GnuPGExtra
+  " Set extra file options.
+    autocmd BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
+  " Automatically close unmodified files after inactivity.
+    autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
+augroup END
+
+function SetGPGOptions()
+    " Set updatetime to 2 minute.
+    set updatetime=300000
+    " Fold at markers.
+    set foldmethod=marker
+    " Remove comment symbols.
+    set commentstring=%s
+    " Automatically close all folds.
+    set foldclose=all
+    " Only open folds with insert commands.
+    set foldopen=insert
+    " Hide tabline
+    set showtabline=0
+endfunction
+
+" Change the text in folds
+" https://stackoverflow.com/a/5984138
+" function! MyFoldText()
+"    let nl = v:foldend - v:foldstart + 1
+"    let comment = substitute(getline(v:foldstart),"^ *","",1)
+"    let linetext = substitute(getline(v:foldstart+1),"^ *","",1)
+"    let txt = '+ ' . linetext . ' : "' . comment . '" : length ' . nl
+"    return txt
+" endfunction
+" set foldtext=MyFoldText()  
+
+" https://vi.stackexchange.com/a/4650
+set foldtext=MyFoldText()
+function MyFoldText()
+  let line = getline(v:foldstart)
+  let sub =  substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
+  return v:folddashes . '> ' . sub 
+endfunction      
