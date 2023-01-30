@@ -8,7 +8,15 @@ if has("gui_running")
      set guifont=Droid\ Sans\ Mono\ 10 " fixed " Шрифт
     " set guifont="Liberation Mono" 
 else
-	colorscheme wombat " evening " Цветовая схема
+    " Перезапсь цветов цветовой схемы
+    " https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
+	augroup MyColors
+        autocmd!
+        autocmd ColorScheme * hi StatusLine   ctermbg=Yellow ctermfg=DarkGray
+                          \ | hi StatusLineNC ctermbg=White ctermfg=DarkGray
+                          \ | hi VertSplit    ctermfg=DarkGray
+    augroup END
+    colorscheme wombat " evening " Цветовая схема
 endif
 
 " Навигация межд окнами через Ctrl + hjkl
