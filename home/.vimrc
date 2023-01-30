@@ -11,18 +11,41 @@ else
 	colorscheme wombat " evening " Цветовая схема
 endif
 
-" переход в нижнее|верхнее|левое|правое окно в нормальном режиме
+" Навигация межд окнами через Ctrl + hjkl
+" A) нормальный режим
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-" переход в нижнее|верхнее|левое|правое окно в режиме терминала
+" Б) режим терминала
 tnoremap <c-j> <c-w>j
 tnoremap <c-k> <c-w>k
 tnoremap <c-h> <c-w>h
 tnoremap <c-l> <c-w>l
 tnoremap <c-l> <c-w>l
 tnoremap <Esc> <c-w>N
+
+" Отображать новый файл при разделении окна
+  " A) ниже текущего или правее текущего
+  " Б) правее текущего
+set splitbelow splitright
+
+" Изменение размера текущего окна через  Ctrl + Arrows
+noremap <silent> <C-Left>  :vertical resize +3<CR>
+noremap <silent> <C-Right> :vertical resize -3<CR>
+noremap <silent> <C-Up>    :resize +3<CR>
+noremap <silent> <C-Down>  :resize -3<CR>
+
+" Изменение вида разбиения окон \ + th{tk}
+map <Leader>th <C-w>t<C-w>H
+map <Leader>tk <C-w>t<C-w>K
+
+" Увеличить время ожидания команд после 
+" нажатия на кнопку <Leader> Она же \
+set timeoutlen=3000
+
+" Удалить символ | из разделителя окон
+set fillchars+=vert:\ 
 
 " переносить строки
 set wrap 
