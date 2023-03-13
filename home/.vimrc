@@ -1,22 +1,73 @@
-" Комментарии 
+" Setting up Vundle - the vim plugin bundler {{{
+    let iCanHazVundle=1
+    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+    if !filereadable(vundle_readme)
+        echo "Installing Vundle.."
+        echo ""
+        silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
+        let iCanHazVundle=0
+    endif
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#begin()
+    " let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
+
+    "Add your bundles here
+    Plugin 'dense-analysis/ale'                         "Asynchronous Lint Engine /Syntax and errors highlighter/
+    Plugin 'https://github.com/tpope/vim-fugitive'      "So awesome, it should be illegal
+    Plugin 'https://github.com/preservim/nerdtree'      "The NERDTree is a file system explorer for the Vim editor
+
+    " All of your Plugins must be added before the following line
+    if iCanHazVundle == 0
+        echo "Installing Vundles, please ignore key map error messages"
+        echo ""
+        :PluginInstall
+    endif
+
+    call vundle#end()             " required
+    filetype plugin indent on     " required
+    " To ignore plugin indent changes, instead use:
+    "filetype plugin on
+    "
+    " Brief help
+    "   :PluginList       - lists configured plugins
+    "   :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+    "   :PluginSearch foo - searches for foo; append `!` to refresh local cache
+    "   :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+    " see :h vundle for more details or wiki for FAQ
+" }}}
+
+" Block of Plugins config {{{
+    " Plugin 'dense-analysis/ale'
+    " Запуск линтера, только при сохранении
+    let g:ale_lint_on_text_changed = 'never'
+    let g:ale_lint_on_insert_leave = 0
+    "
+    " Plugin 'preservim/nerdtree
+    silent! map <F2> :NERDTreeFind<CR>              " Find directory in NERDTree with current file
+    silent! map <F3> :NERDTreeToggle<CR>            " Toggle NERDTree panel
+    let NERDTreeShowHidden=1
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" }}}
+
 if has("gui_running")
     set guioptions+=b
-"    set guioptions-=T
-"    set columns=80
-"    set lines=50
-	colorscheme spring "chela_light " wombat " torte
-     set guifont=Droid\ Sans\ Mono\ 10 " fixed " Шрифт
-    " set guifont="Liberation Mono" 
+    colorscheme torte " evening " spring " wombat " wombat " Цветовая схема
+    set guifont=Terminal\ 10 " fixed " Шрифт
 else
     " Перезапсь цветов цветовой схемы
     " https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
-	augroup MyColors
+    augroup MyColors
         autocmd!
         autocmd ColorScheme * hi StatusLine   ctermbg=Yellow ctermfg=DarkGray
                           \ | hi StatusLineNC ctermbg=White ctermfg=DarkGray
                           \ | hi VertSplit    ctermfg=DarkGray
     augroup END
-    colorscheme wombat " evening " Цветовая схема
+    colorscheme wombat 
 endif
 
 " Навигация межд окнами через Ctrl + hjkl
@@ -63,9 +114,6 @@ set linebreak
 
 " визуализировать ошибки
 set visualbell 
-
-" Очистить подсветку последнего найденного выражения
-nmap <F2> :nohlsearch<CR> 
 
 " Поиск по мере набора 
 set incsearch
