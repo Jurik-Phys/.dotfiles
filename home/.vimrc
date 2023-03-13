@@ -67,6 +67,9 @@ set visualbell
 " Очистить подсветку последнего найденного выражения
 nmap <F2> :nohlsearch<CR> 
 
+" Поиск по мере набора 
+set incsearch
+
 " Список кодировок файлов для автоопределения
 set fileencodings=utf-8,cp1251,koi8-r,cp866 
 
@@ -77,7 +80,6 @@ set number
 set expandtab  
 
 " Количество пробелов в табуляции 
-set ts=4 
 set tabstop=4 " ширина таба {\t}
 set shiftwidth=4 
 set smarttab 
