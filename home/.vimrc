@@ -45,6 +45,8 @@
     " Запуск линтера, только при сохранении
     let g:ale_lint_on_text_changed = 'never'
     let g:ale_lint_on_insert_leave = 0
+    " Парсинг Makefile'а необходим для корректной работы c Qt
+    let g:ale_c_parse_makefile = 1
     "
     " Plugin 'preservim/nerdtree
     silent! map <F2> :NERDTreeFind<CR>              " Find directory in NERDTree with current file
