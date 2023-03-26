@@ -42,10 +42,15 @@
 
 " Block of Plugins config {{{
     " Plugin 'dense-analysis/ale'
-    " Запуск линтера, только при сохранении
-    let g:ale_lint_on_text_changed = 'never'
-    let g:ale_lint_on_insert_leave = 0
-    "
+        " Запуск линтера, только при сохранении
+        let g:ale_lint_on_text_changed = 'never'
+        let g:ale_lint_on_insert_leave = 0
+        " Hardcoded include path for same projects:
+            let options   = '-std=gnu++1z '
+            let options ..= '-I/usr/include/x86_64-linux-gnu/mpich '
+            let options ..= '-I/opt/Qt/6.4.1/gcc_64/include -I/opt/Qt/6.4.1/gcc_64/include/QtWidgets -I/opt/Qt/6.4.1/gcc_64/include/QtGui -I/opt/Qt/6.4.1/gcc_64/include/QtCore '
+            let g:ale_cpp_cc_options = options
+    
     " Plugin 'preservim/nerdtree
     silent! map <F2> :NERDTreeFind<CR>              " Find directory in NERDTree with current file
     silent! map <F3> :NERDTreeToggle<CR>            " Toggle NERDTree panel
