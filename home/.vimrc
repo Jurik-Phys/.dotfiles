@@ -140,7 +140,7 @@ set smarttab
 set smartindent " умное фоматирование отступов
 
 " Модфификация величины отупов для файлов javascript
-autocmd FileType javascript set tabstop=2 | set shiftwidth=2 | set expandtab
+autocmd FileType javascript,css,scss set tabstop=2 | set shiftwidth=2 | set expandtab
 
 " Меню для перекодировки текста 
 " http://www.opennet.ru/base/rus/vim_rus_text.txt.html
