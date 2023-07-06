@@ -418,3 +418,13 @@ function MyFoldText()
   let sub =  substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
   return v:folddashes . '> ' . sub 
 endfunction      
+
+" Delete last spaces on all lines
+" Bind to F12
+function DeleteLineEndSpaces()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+nnoremap <F12> :call DeleteLineEndSpaces()<CR>
