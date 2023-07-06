@@ -156,7 +156,7 @@ menu Encoding.UTF-8      :FencManualEncoding utf-8<CR>
 menu Encoding.UCS-2LE    :FencManualEncoding ucs-2le<CR> 
 map  <F8> :emenu Encoding.<Tab>
 
-set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
+set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %l,%c%V\ %P
 " Отображать статусную строку для каждого окна
 set laststatus=2 
 
