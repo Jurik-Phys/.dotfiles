@@ -19,6 +19,7 @@
     Plugin 'dense-analysis/ale'                         "Asynchronous Lint Engine /Syntax and errors highlighter/
     Plugin 'https://github.com/tpope/vim-fugitive'      "So awesome, it should be illegal
     Plugin 'https://github.com/preservim/nerdtree'      "The NERDTree is a file system explorer for the Vim editor
+    " Plugin 'vim-scripts/wombat256.vim'                "This is a version of Wombat by Lars Nielsen that also works on xterms with 256 colors.
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
@@ -50,7 +51,7 @@
             let options ..= '-I/usr/include/x86_64-linux-gnu/mpich '
             let options ..= '-I/opt/Qt/6.4.1/gcc_64/include -I/opt/Qt/6.4.1/gcc_64/include/QtWidgets -I/opt/Qt/6.4.1/gcc_64/include/QtGui -I/opt/Qt/6.4.1/gcc_64/include/QtCore '
             let g:ale_cpp_cc_options = options
-    
+
     " Plugin 'preservim/nerdtree
     silent! map <F2> :NERDTreeFind<CR>              " Find directory in NERDTree with current file
     silent! map <F3> :NERDTreeToggle<CR>            " Toggle NERDTree panel
@@ -73,7 +74,7 @@ else
                           \ | hi StatusLineNC ctermbg=White ctermfg=DarkGray
                           \ | hi VertSplit    ctermfg=DarkGray
     augroup END
-    colorscheme wombat 
+    colorscheme wombat
 endif
 
 " Навигация межд окнами через Ctrl + hjkl
@@ -105,44 +106,44 @@ noremap <silent> <C-Down>  :resize -3<CR>
 map <Leader>th <C-w>t<C-w>H
 map <Leader>tk <C-w>t<C-w>K
 
-" Увеличить время ожидания команд после 
+" Увеличить время ожидания команд после
 " нажатия на кнопку <Leader> Она же \
 set timeoutlen=3000
 
 " Удалить символ | из разделителя окон
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 
 " переносить строки
-set wrap 
-" set showbreak=\|->\ 
+set wrap
+" set showbreak=\|->\
 " Перенос строк по словам, а не по буквам
 set linebreak
 
 " визуализировать ошибки
-set visualbell 
+set visualbell
 
-" Поиск по мере набора 
+" Поиск по мере набора
 set incsearch
 
 " Список кодировок файлов для автоопределения
-set fileencodings=utf-8,cp1251,koi8-r,cp866 
+set fileencodings=utf-8,cp1251,koi8-r,cp866
 
 " показ номера строки
-set number 
+set number
 
 " заменить табулятор на пробелы
-set expandtab  
+set expandtab
 
-" Количество пробелов в табуляции 
+" Количество пробелов в табуляции
 set tabstop=4 " ширина таба {\t}
-set shiftwidth=4 
-set smarttab 
+set shiftwidth=4
+set smarttab
 set smartindent " умное фоматирование отступов
 
 " Модфификация величины отупов для файлов javascript
 autocmd FileType javascript,css,scss set tabstop=2 | set shiftwidth=2 | set expandtab
 
-" Меню для перекодировки текста 
+" Меню для перекодировки текста
 " http://www.opennet.ru/base/rus/vim_rus_text.txt.html
 " <F8> Change encoding
 " <F8> File encoding for open
@@ -153,24 +154,24 @@ menu Encoding.CP1251     :FencManualEncoding cp1251<CR>
 menu Encoding.KOI8-R     :FencManualEncoding koi8-r<CR>
 menu Encoding.CP866      :FencManualEncoding cp866<CR>
 menu Encoding.UTF-8      :FencManualEncoding utf-8<CR>
-menu Encoding.UCS-2LE    :FencManualEncoding ucs-2le<CR> 
+menu Encoding.UCS-2LE    :FencManualEncoding ucs-2le<CR>
 map  <F8> :emenu Encoding.<Tab>
 
 set statusline=%<%t%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %l,%c%V\ %P
 " Отображать статусную строку для каждого окна
-set laststatus=2 
+set laststatus=2
 
 " Переключение между буферами без сохранения файлов
-set hidden 
+set hidden
 
 " командная строка в две строки
 set ch=3
 
 " для latexsuite
-filetype plugin on                                                                                   
-set grepprg=grep\ -nH\ $*                                                                            
-filetype indent on                                                                                   
-let g:tex_flavor='latex' 
+filetype plugin on
+set grepprg=grep\ -nH\ $*
+filetype indent on
+let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 " полный вывод ошибок и предупреждений в vim-latex
 let g:Tex_IgnoreLevel = 0
@@ -178,7 +179,7 @@ let g:Tex_IgnoreLevel = 0
 " Включить подсветку синтаксиса в *.cls файлах (LaTeX)
 augroup cls_syntax_on
   " Remove all vimrc autocommands within scope
-  autocmd! 
+  autocmd!
   "autocmd BufNewFile,BufRead *.tex   set syntax=tex
   autocmd BufNewFile,BufRead *.cls   set syntax=tex
 augroup END
@@ -207,16 +208,16 @@ imap <C-F7> <Esc>:emenu Spell.<TAB>
 nmap <C-F7> :emenu Spell.<TAB>
 set nospell
 
-highlight clear SpellBad 
-highlight SpellBad  ctermfg=yellow 
-highlight clear SpellCap 
-highlight SpellCap ctermfg=Blue 
+highlight clear SpellBad
+highlight SpellBad  ctermfg=yellow
+highlight clear SpellCap
+highlight SpellCap ctermfg=Blue
 
-highlight clear SpellLocal 
+highlight clear SpellLocal
 highlight SpellLocal ctermfg=Green
 
 syntax on
-set syntax=automatic " Автоматическое определение подсветки 
+set syntax=automatic " Автоматическое определение подсветки
 
 " Все swap файлы будут помещаться в эту папку
 " set dir=~/.vim/swp
@@ -224,7 +225,7 @@ set syntax=automatic " Автоматическое определение по�
 set noswapfile
 
 
-" Обычное перемещение (внутри предложения на нес) 
+" Обычное перемещение (внутри предложения на нес)
 " при включенном переносе;(с помощью стрелок)
 nmap <Up> gk
 nmap <Down> gj
@@ -235,7 +236,7 @@ nmap <Down> gj
 " http://www.vim.org/scripts/script.php?script_id=4503
 "
 " XkbSwitch requires OS dependent keyboard layout switcher. Currently it
-" depends on xkb-switch (http://github.com/ierton/xkb-switch) for UNIX / X Server  
+" depends on xkb-switch (http://github.com/ierton/xkb-switch) for UNIX / X Server
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchIMappings = ['ru']
 
@@ -267,7 +268,7 @@ endfunction
 autocmd FileType c,cc,cpp,h,hpp,s call BindF9_C()
 
 " F5 - собрать LaTeX проект
-" F9 - просмотр/при необходимости сборка 
+" F9 - просмотр/при необходимости сборка
 function! BindF5_LaTeX()
      " map  <F5>      :w<cr>:make!<cr>:cclose<cr>
      " imap <F5> <esc>:w<cr>:make!<cr>:cclose<cr>
@@ -285,7 +286,7 @@ autocmd FileType tex call BindF9_LaTeX()
 " breakindent.patch
 set bri
 
-set showtabline=2 
+set showtabline=2
 highlight TabLineSel ctermfg=Yellow ctermbg=DarkGray
 highlight TabLineFill ctermfg=DarkGray
 highlight TabLine cterm=none
@@ -360,12 +361,12 @@ highlight TabLine cterm=none
 " Задаем собственные функции для назначения имен заголовкам табов <--
 
 
-" Настройка отладчика (загрузка плагина, расположение окон) --> 
+" Настройка отладчика (загрузка плагина, расположение окон) -->
 autocmd FileType c,cc,cpp,h,hpp,s packadd termdebug
 autocmd FileType c,cc,cpp,h,hpp,s cabbrev gdb Termdebug
 let g:termdebug_popup = 0
 let g:termdebug_wide = 1
-" Настройка отладчика (загрузка плагина, расположение окон) <-- 
+" Настройка отладчика (загрузка плагина, расположение окон) <--
 
 """""""""""""""""""""
 " GnuPG Extensions "
@@ -409,15 +410,15 @@ endfunction
 "    let txt = '+ ' . linetext . ' : "' . comment . '" : length ' . nl
 "    return txt
 " endfunction
-" set foldtext=MyFoldText()  
+" set foldtext=MyFoldText()
 
 " https://vi.stackexchange.com/a/4650
 set foldtext=MyFoldText()
 function MyFoldText()
   let line = getline(v:foldstart)
   let sub =  substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
-  return v:folddashes . '> ' . sub 
-endfunction      
+  return v:folddashes . '> ' . sub
+endfunction
 
 " Delete last spaces on all lines
 " Bind to F12
