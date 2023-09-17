@@ -71,8 +71,24 @@ else
     augroup MyColors
         autocmd!
         autocmd ColorScheme * hi StatusLine   ctermbg=Yellow ctermfg=DarkGray
-                          \ | hi StatusLineNC ctermbg=White ctermfg=DarkGray
+                          \ | hi StatusLineNC ctermbg=White  ctermfg=DarkGray
                           \ | hi VertSplit    ctermfg=DarkGray
+                          \ | hi Folded       ctermfg=014     ctermbg=008
+                          \ | hi Keyword      ctermfg=003
+                          \ | hi Function     ctermfg=003
+                          \ | hi String       ctermfg=011
+                          \ | hi Normal       ctermfg=002     ctermbg=000
+                          \ | hi Keyword      ctermfg=014
+                          \ | hi Statement    ctermfg=011
+                          \ | hi Constant     ctermfg=005
+                          \ | hi Number       ctermfg=005
+                          \ | hi PreProc      ctermfg=005
+                          \ | hi Function     ctermfg=011
+                          \ | hi Identifier   ctermfg=011
+                          \ | hi Type         ctermfg=003
+                          \ | hi Special      ctermfg=007
+                          \ | hi Comment      ctermfg=006
+                          \ | hi Todo         ctermfg=011
     augroup END
     colorscheme wombat
 endif
