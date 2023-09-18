@@ -127,7 +127,8 @@ map <Leader>tk <C-w>t<C-w>K
 set timeoutlen=3000
 
 " Удалить символ | из разделителя окон
-set fillchars+=vert:\
+"              vert:\<space>
+set fillchars+=vert:\ 
 
 " переносить строки
 set wrap
