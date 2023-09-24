@@ -75,7 +75,7 @@ else
                           \ | hi VertSplit    ctermfg=DarkGray
                           \ | hi Folded       ctermfg=014      ctermbg=008
                           \ | hi Keyword      ctermfg=003
-                          \ | hi Function     ctermfg=003
+                          \ | hi Function     ctermfg=011
                           \ | hi String       ctermfg=011
                           \ | hi Normal       ctermfg=002      ctermbg=000
                           \ | hi Keyword      ctermfg=014
@@ -83,7 +83,6 @@ else
                           \ | hi Constant     ctermfg=005
                           \ | hi Number       ctermfg=005
                           \ | hi PreProc      ctermfg=005
-                          \ | hi Function     ctermfg=011
                           \ | hi Identifier   ctermfg=011
                           \ | hi Type         ctermfg=003
                           \ | hi Special      ctermfg=007
@@ -236,6 +235,7 @@ highlight SpellLocal ctermfg=Green
 
 syntax on
 set syntax=automatic " Автоматическое определение подсветки
+autocmd Syntax * syn match Statement "[\[\](){}]" containedin=ALL " Подсветка всех скобок в коде
 
 " Все swap файлы будут помещаться в эту папку
 " set dir=~/.vim/swp
