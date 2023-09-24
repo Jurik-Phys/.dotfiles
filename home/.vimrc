@@ -70,14 +70,14 @@ else
     " https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
     augroup MyColors
         autocmd!
-        autocmd ColorScheme * hi StatusLine   ctermbg=Yellow ctermfg=DarkGray
-                          \ | hi StatusLineNC ctermbg=White  ctermfg=DarkGray
+        autocmd ColorScheme * hi StatusLine   ctermfg=DarkGray ctermbg=Yellow 
+                          \ | hi StatusLineNC ctermfg=DarkGray ctermbg=White  
                           \ | hi VertSplit    ctermfg=DarkGray
-                          \ | hi Folded       ctermfg=014     ctermbg=008
+                          \ | hi Folded       ctermfg=014      ctermbg=008
                           \ | hi Keyword      ctermfg=003
                           \ | hi Function     ctermfg=003
                           \ | hi String       ctermfg=011
-                          \ | hi Normal       ctermfg=002     ctermbg=000
+                          \ | hi Normal       ctermfg=002      ctermbg=000
                           \ | hi Keyword      ctermfg=014
                           \ | hi Statement    ctermfg=011
                           \ | hi Constant     ctermfg=005
@@ -88,7 +88,8 @@ else
                           \ | hi Type         ctermfg=003
                           \ | hi Special      ctermfg=007
                           \ | hi Comment      ctermfg=006
-                          \ | hi Todo         ctermfg=011
+                          \ | hi Todo         ctermfg=005       ctermbg=000
+                          \ | hi MatchParen   ctermfg=008       ctermbg=007 
     augroup END
     colorscheme wombat
 endif
