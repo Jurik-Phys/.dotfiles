@@ -197,9 +197,11 @@ let g:Tex_IgnoreLevel = 0
 augroup cls_syntax_on
   " Remove all vimrc autocommands within scope
   autocmd!
-  "autocmd BufNewFile,BufRead *.tex   set syntax=tex
   autocmd BufNewFile,BufRead *.cls   set syntax=tex
 augroup END
+
+" Включить подсветку синтаксиса в *.tex файлах
+autocmd BufNewFile,BufRead *.tex syntax on
 
 " Set switches spelling
 " http://welinux.ru/post/426/
