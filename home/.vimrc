@@ -19,6 +19,7 @@
     Plugin 'dense-analysis/ale'                         "Asynchronous Lint Engine /Syntax and errors highlighter/
     Plugin 'https://github.com/tpope/vim-fugitive'      "So awesome, it should be illegal
     Plugin 'https://github.com/preservim/nerdtree'      "The NERDTree is a file system explorer for the Vim editor
+    Plugin 'https://github.com/Yggdroot/indentLine'
     " Plugin 'vim-scripts/wombat256.vim'                "This is a version of Wombat by Lars Nielsen that also works on xterms with 256 colors.
 
     " All of your Plugins must be added before the following line
@@ -52,13 +53,15 @@
             let options ..= '-I/opt/Qt/6.4.1/gcc_64/include -I/opt/Qt/6.4.1/gcc_64/include/QtWidgets -I/opt/Qt/6.4.1/gcc_64/include/QtGui -I/opt/Qt/6.4.1/gcc_64/include/QtCore '
             let g:ale_cpp_cc_options = options
 
-    " Plugin 'preservim/nerdtree
+    " Plugin 'preservim/nerdtree'
     silent! map <F2> :NERDTreeFind<CR>              " Find directory in NERDTree with current file
     silent! map <F3> :NERDTreeToggle<CR>            " Toggle NERDTree panel
     let NERDTreeShowHidden=1
     let NERDTreeIgnore=['^moc_', '\.o$']
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+    " Plugin 'Yggdroot/indentLine'
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " }}}
 
 if has("gui_running")
