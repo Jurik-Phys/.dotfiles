@@ -19,7 +19,8 @@
     Plugin 'dense-analysis/ale'                         "Asynchronous Lint Engine /Syntax and errors highlighter/
     Plugin 'https://github.com/tpope/vim-fugitive'      "So awesome, it should be illegal
     Plugin 'https://github.com/preservim/nerdtree'      "The NERDTree is a file system explorer for the Vim editor
-    Plugin 'https://github.com/Yggdroot/indentLine'
+    Plugin 'https://github.com/Yggdroot/indentLine'     "Displaying thin vertical lines at each indentation level
+    Plugin 'https://github.com/sheerun/vim-polyglot'    "A collection of language packs for Vim
     " Plugin 'vim-scripts/wombat256.vim'                "This is a version of Wombat by Lars Nielsen that also works on xterms with 256 colors.
 
     " All of your Plugins must be added before the following line
@@ -160,8 +161,8 @@ set shiftwidth=4
 set smarttab
 set smartindent " умное фоматирование отступов
 
-" Модфификация величины отупов для файлов javascript
-autocmd FileType javascript,css,scss set tabstop=2 | set shiftwidth=2 | set expandtab
+" Установка отступов в два пробела для типов файлов
+autocmd FileType javascript,javascriptreact,css,scss,jsx set tabstop=2 | set shiftwidth=2 | set expandtab
 
 " Меню для перекодировки текста
 " http://www.opennet.ru/base/rus/vim_rus_text.txt.html
