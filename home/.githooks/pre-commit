@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Check untracked files 
+untracked_files=$(git ls-files --others --exclude-standard)
+
+if [ -n "$untracked_files" ]; then
+    echo "[EE] There are untracked files in the repository:"
+    for file in ${untracked_files}; do
+        echo "     - $file"
+    done
+    echo -n "[II] Commit without this files? (N/y) "
+
+    # Allows us to read user input below,
+    # assigns stdin to keyboard
+    exec < /dev/tty
+    read confirmation
+
+    if [ "${confirmation}" != "y" ]; then
+        exit 1
+    else 
+        exit 0
+    fi
+fi
