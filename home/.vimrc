@@ -22,6 +22,7 @@
     Plugin 'https://github.com/Yggdroot/indentLine'     "Displaying thin vertical lines at each indentation level
     Plugin 'https://github.com/sheerun/vim-polyglot'    "A collection of language packs for Vim
     " Plugin 'vim-scripts/wombat256.vim'                "This is a version of Wombat by Lars Nielsen that also works on xterms with 256 colors.
+    Plugin 'ludovicchabant/vim-gutentags'               "It will re-generate tag files as you work while staying completely out of your way.
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
@@ -63,6 +64,12 @@
 
     " Plugin 'Yggdroot/indentLine'
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+    " Plugin 'ludovicchabant/vim-gutentags'
+    let g:gutentags_add_default_project_roots = 0 " Disable default root markers
+    let g:gutentags_project_root = ['.gutentags','.vimGutenTags']
+    let g:gutentags_ctags_exclude = [ '.git', 'build', 'depends', 'docs', '.md', '.cache', 'tags', '.css', '.vim' ]
+    set tag=./tags,tags;$HOME " Find file with name 'tags' in current dir and upper up-to $HOME
 " }}}
 
 if has("gui_running")
