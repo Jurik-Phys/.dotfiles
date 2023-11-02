@@ -445,6 +445,14 @@ function MyFoldText()
   return v:folddashes . '> ' . sub
 endfunction
 
+" Mark last spaces on line
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+au BufWinEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
+au BufWinLeave * call clearmatches()
+
 " Delete last spaces on all lines
 " Bind to F12
 function DeleteLineEndSpaces()
