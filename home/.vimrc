@@ -75,8 +75,8 @@ else
     " https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
     augroup MyColors
         autocmd!
-        autocmd ColorScheme * hi StatusLine   ctermfg=DarkGray ctermbg=Yellow 
-                          \ | hi StatusLineNC ctermfg=DarkGray ctermbg=White  
+        autocmd ColorScheme * hi StatusLine   ctermfg=DarkGray ctermbg=Yellow
+                          \ | hi StatusLineNC ctermfg=DarkGray ctermbg=White
                           \ | hi VertSplit    ctermfg=DarkGray
                           \ | hi Folded       ctermfg=014      ctermbg=008
                           \ | hi Keyword      ctermfg=003
@@ -93,7 +93,7 @@ else
                           \ | hi Special      ctermfg=007
                           \ | hi Comment      ctermfg=006
                           \ | hi Todo         ctermfg=005       ctermbg=000
-                          \ | hi MatchParen   ctermfg=007       ctermbg=008 
+                          \ | hi MatchParen   ctermfg=007       ctermbg=008
     augroup END
     colorscheme wombat
 endif
