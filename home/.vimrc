@@ -1,34 +1,34 @@
 " Setting up Vundle - the vim plugin bundler {{{
     let iCanHazVundle=1
-    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+    let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
     if !filereadable(vundle_readme)
         echo "Installing Vundle.."
         echo ""
         silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
+        silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
         let iCanHazVundle=0
     endif
     set nocompatible              " be iMproved, required
     filetype off                  " required
-    set rtp+=~/.vim/bundle/vundle/
+    set rtp+=~/.vim/bundle/Vundle.vim/
     call vundle#begin()
-    " let Vundle manage Vundle, required
+    " Let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
 
-    "Add your bundles here
-    Plugin 'dense-analysis/ale'                         "Asynchronous Lint Engine /Syntax and errors highlighter/
-    Plugin 'https://github.com/tpope/vim-fugitive'      "So awesome, it should be illegal
-    Plugin 'https://github.com/preservim/nerdtree'      "The NERDTree is a file system explorer for the Vim editor
-    Plugin 'https://github.com/Yggdroot/indentLine'     "Displaying thin vertical lines at each indentation level
-    Plugin 'https://github.com/sheerun/vim-polyglot'    "A collection of language packs for Vim
-    Plugin 'ludovicchabant/vim-gutentags'               "It will re-generate tag files as you work while staying completely out of your way.
-    Plugin 'Shougo/ddc.vim'                             "Dark deno-powered completion /ddc.vim/ framework for neovim/Vim
-    Plugin 'vim-denops/denops.vim'                      "Denops is ecosystem of Vim/Neovim which allows developers to write plugins in Deno
-    Plugin 'Shougo/ddc-ui-native'                       "/UI/ Native popup menu UI for ddc.vim
-    Plugin 'Shougo/ddc-source-around'                   "/Source/ Around completion for ddc.vim
-    Plugin 'Shougo/ddc-filter-sorter_rank'              "/Filter/ Matched rank order sorter for ddc.vim
-    Plugin 'Shougo/ddc-filter-matcher_head'             "/Filter/ Heading matcher for ddc.vim
-    Plugin 'ervandew/supertab'                          "Supertab is a plugin which allows you to perform all your insert completion
+    " Add your bundles here
+    Plugin 'dense-analysis/ale'                         " Asynchronous Lint Engine /Syntax and errors highlighter/
+    Plugin 'https://github.com/tpope/vim-fugitive'      " So awesome, it should be illegal
+    Plugin 'https://github.com/preservim/nerdtree'      " The NERDTree is a file system explorer for the Vim editor
+    Plugin 'https://github.com/Yggdroot/indentLine'     " Displaying thin vertical lines at each indentation level
+    Plugin 'https://github.com/sheerun/vim-polyglot'    " A collection of language packs for Vim
+    Plugin 'ludovicchabant/vim-gutentags'               " It will re-generate tag files as you work while staying completely out of your way.
+    Plugin 'Shougo/ddc.vim'                             " Dark deno-powered completion /ddc.vim/ framework for neovim/Vim
+    Plugin 'vim-denops/denops.vim'                      " Denops is ecosystem of Vim/Neovim which allows developers to write plugins in Deno
+    Plugin 'Shougo/ddc-ui-native'                       " /UI/ Native popup menu UI for ddc.vim
+    Plugin 'Shougo/ddc-source-around'                   " /Source/ Around completion for ddc.vim
+    Plugin 'matsui54/ddc-buffer'                        " /Source/ Collects keywords from current buffer, buffers whose window is in the same tabpage and other
+    Plugin 'tani/ddc-fuzzy'                             " /Filter/ Fuzzy matching filters for ddc.vim.
+    Plugin 'ervandew/supertab'                          " Supertab is a plugin which allows you to perform all your insert completion
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
@@ -82,12 +82,19 @@
 
     " Plugin ddc.vim
     call ddc#custom#patch_global('ui', 'native')
-    call ddc#custom#patch_global('sources', ['around'])
+    call ddc#custom#patch_global('sources', ['around', 'buffer'])
     call ddc#custom#patch_global('sourceOptions', {
-      \ 'around': { 'mark' : '[A]' },
       \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank']},
+      \   'matchers': ['matcher_fuzzy'],
+      \   'sorters': ['sorter_fuzzy'],
+      \   'converters': ['converter_fuzzy'],
+      \ },
+      \ 'around': {
+        \ 'mark' : '[A]',
+      \ },
+      \ 'buffer' : {
+        \ 'mark' : '[B]',
+      \ },
       \ })
     call ddc#enable()
 
