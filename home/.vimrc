@@ -21,8 +21,14 @@
     Plugin 'https://github.com/preservim/nerdtree'      "The NERDTree is a file system explorer for the Vim editor
     Plugin 'https://github.com/Yggdroot/indentLine'     "Displaying thin vertical lines at each indentation level
     Plugin 'https://github.com/sheerun/vim-polyglot'    "A collection of language packs for Vim
-    " Plugin 'vim-scripts/wombat256.vim'                "This is a version of Wombat by Lars Nielsen that also works on xterms with 256 colors.
     Plugin 'ludovicchabant/vim-gutentags'               "It will re-generate tag files as you work while staying completely out of your way.
+    Plugin 'Shougo/ddc.vim'                             "Dark deno-powered completion /ddc.vim/ framework for neovim/Vim
+    Plugin 'vim-denops/denops.vim'                      "Denops is ecosystem of Vim/Neovim which allows developers to write plugins in Deno
+    Plugin 'Shougo/ddc-ui-native'                       "/UI/ Native popup menu UI for ddc.vim
+    Plugin 'Shougo/ddc-source-around'                   "/Source/ Around completion for ddc.vim
+    Plugin 'Shougo/ddc-filter-sorter_rank'              "/Filter/ Matched rank order sorter for ddc.vim
+    Plugin 'Shougo/ddc-filter-matcher_head'             "/Filter/ Heading matcher for ddc.vim
+    Plugin 'ervandew/supertab'                          "Supertab is a plugin which allows you to perform all your insert completion
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
@@ -65,11 +71,26 @@
     " Plugin 'Yggdroot/indentLine'
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+    "Plugin ervandew/supertab
+    let g:SuperTabDefaultCompletionType = "<c-x><c-]>"
+
     " Plugin 'ludovicchabant/vim-gutentags'
     let g:gutentags_add_default_project_roots = 0 " Disable default root markers
     let g:gutentags_project_root = ['.gutentags','.vimGutenTags']
     let g:gutentags_ctags_exclude = [ '.git', 'build', 'depends', 'docs', '.md', '.cache', 'tags', '.css', '.vim' ]
     set tag=./tags,tags;$HOME " Find file with name 'tags' in current dir and upper up-to $HOME
+
+    " Plugin ddc.vim
+    call ddc#custom#patch_global('ui', 'native')
+    call ddc#custom#patch_global('sources', ['around'])
+    call ddc#custom#patch_global('sourceOptions', {
+      \ 'around': { 'mark' : '[A]' },
+      \ '_': {
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank']},
+      \ })
+    call ddc#enable()
+
 " }}}
 
 if has("gui_running")
@@ -101,6 +122,10 @@ else
                           \ | hi Comment      ctermfg=006
                           \ | hi Todo         ctermfg=005       ctermbg=000
                           \ | hi MatchParen   ctermfg=007       ctermbg=008
+                          \ | hi Pmenu        ctermfg=015       ctermbg=008
+                          \ | hi PmenuSel     ctermfg=000       ctermbg=007
+                          \ | hi PmenuSbar                      ctermbg=008
+                          \ | hi PmenuThumb                     ctermbg=007
     augroup END
     colorscheme wombat
 endif
