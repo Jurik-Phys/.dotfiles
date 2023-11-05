@@ -27,6 +27,7 @@
     Plugin 'Shougo/ddc-ui-native'                       " /UI/ Native popup menu UI for ddc.vim
     Plugin 'Shougo/ddc-source-around'                   " /Source/ Around completion for ddc.vim
     Plugin 'matsui54/ddc-buffer'                        " /Source/ Collects keywords from current buffer, buffers whose window is in the same tabpage and other
+    Plugin 'Shougo/ddc-filter-converter_remove_overlap' " /Filter/ The filter removes overlapped text in a candidate's word.
     Plugin 'tani/ddc-fuzzy'                             " /Filter/ Fuzzy matching filters for ddc.vim.
     Plugin 'ervandew/supertab'                          " Supertab is a plugin which allows you to perform all your insert completion
 
@@ -87,12 +88,12 @@
       \ '_': {
       \   'matchers': ['matcher_fuzzy'],
       \   'sorters': ['sorter_fuzzy'],
-      \   'converters': ['converter_fuzzy'],
+      \   'converters': ['converter_fuzzy', 'converter_remove_overlap' ],
       \ },
       \ 'around': {
         \ 'mark' : '[A]',
       \ },
-      \ 'buffer' : {
+      \ 'buffer': {
         \ 'mark' : '[B]',
       \ },
       \ })
