@@ -241,6 +241,8 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 " полный вывод ошибок и предупреждений в vim-latex
 let g:Tex_IgnoreLevel = 0
+" Disable latex symbol conversion
+let g:tex_conceal = ""
 
 " Включить подсветку синтаксиса в *.cls файлах (LaTeX)
 augroup cls_syntax_on
