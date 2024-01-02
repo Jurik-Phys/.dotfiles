@@ -8,7 +8,7 @@
 /* show close button on hover */
 #tabbrowser-tabs[closebuttons="activetab"]
  .tabbrowser-tab:not([selected]):not([pinned]):hover .tab-close-button {
- display: -moz-inline-box !important;
+ display: flex !important;
 }
 
 /* make the close button more clearly visible on hover */
