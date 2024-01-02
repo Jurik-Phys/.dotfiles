@@ -50,8 +50,7 @@ See the above repository for updates as well as full license text. */
 
 :root{
     --multirow-n-rows: 4;
-    --multirow-tab-min-width: 132px;
-    --multirow-tab-dynamic-width: 0; /* Change to 0 for fixed-width tabs using the above width. */
+    --multirow-tab-min-width: 134px;
 
   	/* urbanhusky hacks */
    	--inline-tab-padding: 0px; /* less space wasted left/right inside tab */
@@ -119,12 +118,7 @@ See the above repository for updates as well as full license text. */
 
 .tabbrowser-tab[fadein]:not([pinned]){
   min-width: var(--multirow-tab-min-width) !important;
-  flex-grow: var(--multirow-tab-dynamic-width);
-  /*
-  Uncomment to enable full-width tabs, also makes tab dragging a tiny bit more sensible
-  Don't set to none or you'll see errors in console when closing tabs
-  */
-  /*max-width: 100vw !important;*/
+  max-width: 134px !important;
 }
 
 .tabbrowser-tab > stack{ width: 100%; height: 100% }
