@@ -59,6 +59,7 @@
         let g:ale_lint_on_insert_leave = 0
         let g:ale_c_cc_options = '-std=c11 -Wall'
         let g:ale_cpp_cc_options = '-std=gnu++1z -Wall'
+        let g:ale_cpp_parse_headers = 0
         " Hardcoded include path for same projects:
             let options   = ''
             " MPICH Project
@@ -198,7 +199,7 @@ set timeoutlen=3000
 
 " Удалить символ | из разделителя окон
 "              vert:\<space>
-set fillchars+=vert:\
+set fillchars+=vert:\ 
 
 " переносить строки
 set wrap
