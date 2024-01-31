@@ -54,6 +54,10 @@
 
 " Block of Plugins config {{{
     " Plugin 'dense-analysis/ale'
+        " Симол ошибки на полях
+        let g:ale_sign_error = '>>'
+        " Шиирокий вертикальный разделитель для уведомлений
+        let g:ale_sign_column_always = 1
         " Запуск линтера, только при сохранении
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
