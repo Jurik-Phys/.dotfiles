@@ -164,6 +164,9 @@ else
                           \ | hi PmenuSel     ctermfg=000       ctermbg=007
                           \ | hi PmenuSbar                      ctermbg=008
                           \ | hi PmenuThumb                     ctermbg=007
+                          \ | hi TabLineSel   ctermfg=White     ctermbg=DarkGray
+                          \ | hi TabLineFill  ctermfg=DarkGray
+                          \ | hi TabLine      ctermfg=Yellow    cterm=none
     augroup END
     colorscheme wombat
 endif
@@ -384,9 +387,6 @@ autocmd FileType tex call BindF9_LaTeX()
 set bri
 
 set showtabline=2
-highlight TabLineSel ctermfg=Yellow ctermbg=DarkGray
-highlight TabLineFill ctermfg=DarkGray
-highlight TabLine cterm=none
 
 " Задаем собственные функции для назначения имен заголовкам табов -->
 " Источник: https://habr.com/ru/post/29373/
