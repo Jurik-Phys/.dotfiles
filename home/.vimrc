@@ -141,32 +141,37 @@ else
     " https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
     augroup MyColors
         autocmd!
-        autocmd ColorScheme * hi StatusLine   ctermfg=DarkGray ctermbg=Yellow
-                          \ | hi StatusLineNC ctermfg=DarkGray ctermbg=White
+        autocmd ColorScheme * hi StatusLine   ctermfg=DarkGray     ctermbg=Yellow
+                          \ | hi StatusLineNC ctermfg=DarkGray     ctermbg=White
                           \ | hi VertSplit    ctermfg=DarkGray
-                          \ | hi Folded       ctermfg=014      ctermbg=008
-                          \ | hi Keyword      ctermfg=003
-                          \ | hi Function     ctermfg=011
-                          \ | hi String       ctermfg=011
-                          \ | hi Normal       ctermfg=002      ctermbg=000
-                          \ | hi Keyword      ctermfg=014
-                          \ | hi Statement    ctermfg=011
-                          \ | hi Constant     ctermfg=005
-                          \ | hi Number       ctermfg=005
-                          \ | hi PreProc      ctermfg=005
-                          \ | hi Identifier   ctermfg=011
-                          \ | hi Type         ctermfg=003
-                          \ | hi Special      ctermfg=007
-                          \ | hi Comment      ctermfg=006
-                          \ | hi Todo         ctermfg=005       ctermbg=000
-                          \ | hi MatchParen   ctermfg=007       ctermbg=008
-                          \ | hi Pmenu        ctermfg=015       ctermbg=008
-                          \ | hi PmenuSel     ctermfg=000       ctermbg=007
-                          \ | hi PmenuSbar                      ctermbg=008
-                          \ | hi PmenuThumb                     ctermbg=007
-                          \ | hi TabLineSel   ctermfg=White     ctermbg=DarkGray
+                          \ | hi Folded       ctermfg=LightCyan    ctermbg=DarkGray
+                          \ | hi Keyword      ctermfg=Brown
+                          \ | hi Function     ctermfg=Yellow
+                          \ | hi String       ctermfg=Yellow
+                          \ | hi Normal       ctermfg=DarkGreen    ctermbg=Black
+                          \ | hi Keyword      ctermfg=LightCyan
+                          \ | hi Statement    ctermfg=Yellow
+                          \ | hi Constant     ctermfg=DarkMagenta
+                          \ | hi Number       ctermfg=DarkMagenta
+                          \ | hi PreProc      ctermfg=DarkMagenta
+                          \ | hi Identifier   ctermfg=Yellow
+                          \ | hi Type         ctermfg=Brown
+                          \ | hi Special      ctermfg=LightGray
+                          \ | hi Comment      ctermfg=DarkCyan
+                          \ | hi Todo         ctermfg=DarkMagenta  ctermbg=Black
+                          \ | hi MatchParen   ctermfg=LightGray    ctermbg=DarkGray
+                          \ | hi Pmenu        ctermfg=White        ctermbg=DarkGray
+                          \ | hi PmenuSel     ctermfg=Black        ctermbg=LightGray
+                          \ | hi PmenuSbar                         ctermbg=DarkGray
+                          \ | hi PmenuThumb                        ctermbg=LightGray
+                          \ | hi TabLineSel   ctermfg=White        ctermbg=237
                           \ | hi TabLineFill  ctermfg=DarkGray
-                          \ | hi TabLine      ctermfg=Yellow    cterm=none
+                          \ | hi TabLine      ctermfg=Yellow                         cterm=none
+                          \ | hi Visual                            ctermbg=DarkGray
+                          \ | hi CursorLine                        ctermbg=DarkGray  cterm=none
+                          \ | hi Directory    ctermfg=DarkCyan
+                          \ | hi NERDTreeDirSlash  ctermfg=DarkCyan
+                          \ | hi NERDTreeCWD ctermfg=LightGray
     augroup END
     colorscheme wombat
 endif
@@ -406,7 +411,7 @@ set showtabline=2
                 let tabline .= '%' . (i + 1) . 'T'
 
                 " Получаем имя вкладки
-                let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} |'
+                let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} '
             endfor
         " Формируем tabline для каждой вкладки <--
 
