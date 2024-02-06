@@ -54,6 +54,8 @@
 
 " Block of Plugins config {{{
     " Plugin 'dense-analysis/ale'
+        " Setup react linter to 'eslint'
+        let g:ale_linters = { 'javascriptreact' : ['eslint']}
         " Симол ошибки на полях
         let g:ale_sign_error = '>>'
         " Шиирокий вертикальный разделитель для уведомлений
