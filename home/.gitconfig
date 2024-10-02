@@ -17,3 +17,5 @@ lg = !"git log1a"
     quotepath = false
 [push]
 	default = simple
+[init]
+	defaultBranch = main
