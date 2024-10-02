@@ -68,6 +68,8 @@
         let g:ale_cpp_parse_headers = 0
         " Hardcoded include path for same projects:
             let options   = ''
+            " Find header files in "./src" project directory
+            let options ..= '-I./src '
             " MPICH Project
             let options ..= '-I/usr/include/x86_64-linux-gnu/mpich '
             " Local Qt6
