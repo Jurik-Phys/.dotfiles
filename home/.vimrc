@@ -497,6 +497,10 @@ augroup GnuPGExtra
     autocmd BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) call SetGPGOptions()
   " Automatically close unmodified files after inactivity.
     autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
+    " Disable IndentLine plugin
+    let g:indentLine_enabled = 0
+    " Reload colorscheme to workaround black & green color
+    autocmd User GnuPG colorscheme wombat
 augroup END
 
 function SetGPGOptions()
