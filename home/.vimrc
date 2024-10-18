@@ -31,6 +31,7 @@
     Plugin 'Shougo/ddc-filter-converter_remove_overlap' " /Filter/ The filter removes overlapped text in a candidate's word.
     Plugin 'tani/ddc-fuzzy'                             " /Filter/ Fuzzy matching filters for ddc.vim.
     Plugin 'ervandew/supertab'                          " Supertab is a plugin which allows you to perform all your insert completion
+    Plugin 'jamessan/vim-gnupg'                         " This script implements transparent editing of gpg encrypted files
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
@@ -53,6 +54,10 @@
 " }}}
 
 " Block of Plugins config {{{
+    " Plugin 'vim-denops/denops.vim'
+        " [Temporarly workaround for old vim
+        " Disable warning "Denops requires Vim 9.1.0448 or Neovim 0.10.0"
+        let g:denops_disable_version_check = 1
     " Plugin 'dense-analysis/ale'
         " Setup react linter to 'eslint'
         let g:ale_linters = { 'javascriptreact' : ['eslint']}
