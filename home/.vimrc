@@ -53,6 +53,10 @@
 " }}}
 
 " Block of Plugins config {{{
+    " Plugin 'vim-denops/denops.vim'
+        " [Temporarly workaround for old vim
+        " Disable warning "Denops requires Vim 9.1.0448 or Neovim 0.10.0"
+        let g:denops_disable_version_check = 1
     " Plugin 'dense-analysis/ale'
         " Setup react linter to 'eslint'
         let g:ale_linters = { 'javascriptreact' : ['eslint']}
