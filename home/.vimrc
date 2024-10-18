@@ -70,6 +70,8 @@
             let options   = ''
             " Find header files in "./src" project directory
             let options ..= '-I./src '
+            " MicroTeX library include
+            let options ..= '-I./ext/MicroTeX '
             " MPICH Project
             let options ..= '-I/usr/include/x86_64-linux-gnu/mpich '
             " Local Qt6
