@@ -268,7 +268,21 @@ menu Encoding.UTF-8      :FencManualEncoding utf-8<CR>
 menu Encoding.UCS-2LE    :FencManualEncoding ucs-2le<CR>
 map  <F8> :emenu Encoding.<Tab>
 
-set statusline=%<[wID\ %{winnr()}]\ %t%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %l,%c%V\ %P
+function! EnFilePosition()
+    let total_lines = line('$')
+    let current_line = line('.')
+    if total_lines == 1
+        return 'ALL'
+    elseif current_line == 1
+        return 'TOP'
+    elseif current_line == total_lines
+        return 'END'
+    else
+        return printf('%02d%%', (current_line * 100 / total_lines))
+    endif
+endfunction
+
+set statusline=%<[wID\ %{winnr()}]\ %t%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %l,%{printf('%03d\ [%03d\]',virtcol('.'),strdisplaywidth(getline('.')))}\ %{EnFilePosition()}
 " Отображать статусную строку для каждого окна
 set laststatus=2
 
