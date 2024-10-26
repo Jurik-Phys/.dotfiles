@@ -180,6 +180,7 @@ else
                           \ | hi TabLine      ctermfg=Yellow                         cterm=none
                           \ | hi Visual                            ctermbg=DarkGray
                           \ | hi CursorLine                        ctermbg=DarkGray  cterm=none
+                          \ | hi ColorColumn                       ctermbg=017
                           \ | hi Directory    ctermfg=DarkCyan
                           \ | hi NERDTreeDirSlash  ctermfg=DarkCyan
                           \ | hi NERDTreeCWD ctermfg=LightGray
@@ -487,6 +488,9 @@ set showtabline=2
     set guitablabel=%!MyGuiTabLabel()
 " Задаем собственные функции для назначения имен заголовкам табов <--
 
+" Индикация 81-ого столбца символов в тексте
+" Мягкое ограничение ширины строк исходого кода
+autocmd BufEnter *.c,*.cpp,*.h,*.hpp setlocal colorcolumn=81
 
 " Настройка отладчика (загрузка плагина, расположение окон) -->
 autocmd FileType c,cc,cpp,h,hpp,s packadd termdebug
