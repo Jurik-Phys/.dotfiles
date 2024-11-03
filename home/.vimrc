@@ -572,3 +572,6 @@ function DeleteLineEndSpaces()
 endfunc
 
 nnoremap <F12> :call DeleteLineEndSpaces()<CR>
+
+" :AddBeginEnd command to add filename into begin and end of file
+command! AddBeginEnd execute 'normal ggO' . '<Esc>v^xi' . '// Begin ' . expand('%:t') . '<Esc>o' . '<Esc>v^xGo' . '<Esc>v^xi// End ' . expand('%:t') . '<Esc>O' . '<Esc>v^x' . '<Esc>ggji'
