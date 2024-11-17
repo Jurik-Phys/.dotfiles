@@ -62,7 +62,7 @@
     " Plugin 'dense-analysis/ale'
         " Setup react linter to 'eslint'
         let g:ale_linters = { 'javascriptreact' : ['eslint']}
-        " Симол ошибки на полях
+        " Символ ошибки на полях
         let g:ale_sign_error = '>>'
         " Шиирокий вертикальный разделитель для уведомлений
         let g:ale_sign_column_always = 1
@@ -140,6 +140,10 @@
       \ },
       \ })
     call ddc#enable()
+
+    " Plugin vim-xkbswitch
+    " It requires OS dependent keyboard layout switcher
+    let g:XkbSwitchEnabled = 1
 
 " }}}
 
@@ -364,13 +368,6 @@ nmap <Down> gj
 " imap <Up> <C-o>gk
 " imap <Down> <C-o>gj
 :set virtualedit=all
-
-" http://www.vim.org/scripts/script.php?script_id=4503
-"
-" XkbSwitch requires OS dependent keyboard layout switcher. Currently it
-" depends on xkb-switch (http://github.com/ierton/xkb-switch) for UNIX / X Server
-let g:XkbSwitchEnabled = 1
-let g:XkbSwitchIMappings = ['ru']
 
 " http://welinux.ru/post/3478/
 function! BindF5_C()
