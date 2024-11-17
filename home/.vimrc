@@ -32,6 +32,7 @@
     Plugin 'tani/ddc-fuzzy'                             " /Filter/ Fuzzy matching filters for ddc.vim.
     Plugin 'ervandew/supertab'                          " Supertab is a plugin which allows you to perform all your insert completion
     Plugin 'jamessan/vim-gnupg'                         " This script implements transparent editing of gpg encrypted files
+    Plugin 'lyokha/vim-xkbswitch'                       " This plugin used to switch keyboard layout back and forth when entering and leaving Insert mode.
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
