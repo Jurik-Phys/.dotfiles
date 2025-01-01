@@ -159,9 +159,11 @@ See the above repository for updates as well as full license text. */
 /* My hack */
 
 .tab-background {
-    border-radius: 0px 0px !important;
-    margin-top: 1px !important;
-    margin-bottom: 0px !important;
+  border-radius: 0px 0px !important;
+  margin-top: 1px !important;
+  margin-bottom: 0px !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /**** TAB border top - BEGIN ****/
