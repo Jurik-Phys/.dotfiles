@@ -214,6 +214,16 @@ See the above repository for updates as well as full license text. */
 }
 /**** Remove active tab outline - END ****/
 
+/*** Titelbar tunning with (in)active firefox window - BEGIN ***/
+#titlebar {
+  background-color: #2D3333 !important;
+}
+
+#titlebar:-moz-window-inactive {
+  opacity: 1.0 !important;
+  background-color: #393F3F !important;
+}
+/*** Tab into inactive firefox window - END ***/
 
 /**** Popup menu color - BEGIN ****/
 /* SOURCE: https://jscher2000.github.io/userchrome-dot-org/firefox-89-styling-proton-ui.html */
