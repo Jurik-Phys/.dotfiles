@@ -199,7 +199,7 @@ See the above repository for updates as well as full license text. */
 
 
 /**** URL BAR Highlight - BEGIN ****/
-#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background, #searchbar:focus-within {
+#urlbar > #urlbar-background, #searchbar {
     outline:none !important;
 }
 /**** URL BAR Highlight - END ****/
