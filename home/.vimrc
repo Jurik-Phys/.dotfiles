@@ -574,3 +574,7 @@ nnoremap <F12> :call DeleteLineEndSpaces()<CR>
 
 " :AddBeginEnd command to add filename into begin and end of file
 command! AddBeginEnd execute 'normal ggO' . '<Esc>v^xi' . '// Begin ' . expand('%:t') . '<Esc>o' . '<Esc>v^xGo' . '<Esc>v^xi// End ' . expand('%:t') . '<Esc>O' . '<Esc>v^x' . '<Esc>ggji'
+
+" :BuffOnly command for delete all hidden buffers
+" :BuffOnly! for delete hidden buffers with unsaved changes
+command -bang BuffOnly execute ( <bang>0 ? 'Bdelete! hidden' : 'Bdelete hidden' )
