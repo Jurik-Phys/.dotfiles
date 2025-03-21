@@ -228,6 +228,24 @@ inoremap ''     ''<Left>
 inoremap ""     ""<Left>
 inoremap <>     <><Left>
 
+" Отмена перемещения курсора
+" внутрь набраных двойных скобок
+" по нажатию <Esc>
+function! JumpFromBrackets()
+  let line = getline('.')
+  if (line[col('.') - 2] == '{' && line[col('.') - 1] == '}') ||
+    \(line[col('.') - 2] == '[' && line[col('.') - 1] == ']') ||
+    \(line[col('.') - 2] == '(' && line[col('.') - 1] == ')') ||
+    \(line[col('.') - 2] == "'" && line[col('.') - 1] == "'") ||
+    \(line[col('.') - 2] == '"' && line[col('.') - 1] == '"') ||
+    \(line[col('.') - 2] == '<' && line[col('.') - 1] == '>')
+    return "\<Esc>la"
+  endif
+  return "\<Esc>"
+endfunction
+
+inoremap <expr> <Esc> JumpFromBrackets()
+
 " Изменение вида разбиения окон \ + th{tk}
 map <Leader>th <C-w>t<C-w>H
 map <Leader>tk <C-w>t<C-w>K
