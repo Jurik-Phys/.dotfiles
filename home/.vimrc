@@ -34,6 +34,7 @@
     Plugin 'jamessan/vim-gnupg'                         " This script implements transparent editing of gpg encrypted files
     Plugin 'lyokha/vim-xkbswitch'                       " This plugin used to switch keyboard layout back and forth when entering and leaving Insert mode.
     Plugin 'Asheq/close-buffers.vim'                    " This plug-in allows you to quickly bdelete several buffers at once.
+    Plugin 'jiangmiao/auto-pairs'                       " Insert or delete brackets, parens, quotes in pair.
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
@@ -219,17 +220,7 @@ noremap <silent> <C-Right> :vertical resize -3<CR>
 noremap <silent> <C-Up>    :resize +3<CR>
 noremap <silent> <C-Down>  :resize -3<CR>
 
-" Пермещение курсора внутрь
-" набраных двойных скобок
-inoremap {}     {}<Left>
-inoremap []     []<Left>
-inoremap ()     ()<Left>
-inoremap ''     ''<Left>
-inoremap ""     ""<Left>
-inoremap <>     <><Left>
-
-" Отмена перемещения курсора
-" внутрь набраных двойных скобок
+" Выйти из пустых скобок в режиме вставки
 " по нажатию <Esc>
 function! JumpFromBrackets()
   let line = getline('.')
