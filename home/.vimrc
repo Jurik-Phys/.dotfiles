@@ -35,6 +35,7 @@
     Plugin 'lyokha/vim-xkbswitch'                       " This plugin used to switch keyboard layout back and forth when entering and leaving Insert mode.
     Plugin 'Asheq/close-buffers.vim'                    " This plug-in allows you to quickly bdelete several buffers at once.
     Plugin 'jiangmiao/auto-pairs'                       " Insert or delete brackets, parens, quotes in pair.
+    Plugin 'frazrepo/vim-rainbow'                       " Rainbow of brackets
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
@@ -147,6 +148,11 @@
     " It requires OS dependent keyboard layout switcher
     let g:XkbSwitchEnabled = 1
 
+    " Plugin 'vim-rainbow'
+    " Включение подсветки для правильной работы плагина
+    syntax on
+    autocmd FileType c,cc,cpp,h,hpp,s,tex call rainbow#load()
+    let g:rainbow_ctermfgs = ['Yellow', 'Yellow', 'Brown', 'DarkMagenta']
 " }}}
 
 if has("gui_running")
@@ -366,9 +372,6 @@ highlight SpellCap ctermfg=Blue
 
 highlight clear SpellLocal
 highlight SpellLocal ctermfg=Green
-
-set syntax=automatic " Автоматическое определение подсветки
-autocmd Syntax * syn match Statement "[\[\](){}]" containedin=ALL " Подсветка всех скобок в коде
 
 " Все swap файлы будут помещаться в эту папку
 " set dir=~/.vim/swp
