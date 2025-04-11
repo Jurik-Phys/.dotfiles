@@ -332,11 +332,8 @@ let g:tex_conceal = ""
 augroup cls_syntax_on
   " Remove all vimrc autocommands within scope
   autocmd!
-  autocmd BufNewFile,BufRead *.cls   set syntax=tex
+  autocmd BufNewFile,BufRead *.cls set syntax=tex
 augroup END
-
-" Включить подсветку синтаксиса в *.tex файлах
-autocmd BufNewFile,BufRead *.tex syntax on
 
 " Set switches spelling
 " http://welinux.ru/post/426/
@@ -370,7 +367,6 @@ highlight SpellCap ctermfg=Blue
 highlight clear SpellLocal
 highlight SpellLocal ctermfg=Green
 
-syntax on
 set syntax=automatic " Автоматическое определение подсветки
 autocmd Syntax * syn match Statement "[\[\](){}]" containedin=ALL " Подсветка всех скобок в коде
 
@@ -378,7 +374,6 @@ autocmd Syntax * syn match Statement "[\[\](){}]" containedin=ALL " Подсве
 " set dir=~/.vim/swp
 " Отключить создание swap-файла
 set noswapfile
-
 
 " Обычное перемещение (внутри предложения на нес)
 " при включенном переносе;(с помощью стрелок)
