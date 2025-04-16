@@ -153,6 +153,12 @@
     syntax on
     autocmd FileType c,cc,cpp,h,hpp,s,tex call rainbow#load()
     let g:rainbow_ctermfgs = ['Yellow', 'Yellow', 'Brown', 'DarkMagenta']
+
+    " Plugin 'Auto-Pairs'
+    " Skip closing brakets before a word
+    " https://github.com/jiangmiao/auto-pairs/issues/117
+    " Workaround via fast delete unnecessary brackets over Ctrl+d
+    inoremap <C-d> <Del>
 " }}}
 
 if has("gui_running")
