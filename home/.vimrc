@@ -34,7 +34,7 @@
     Plugin 'jamessan/vim-gnupg'                         " This script implements transparent editing of gpg encrypted files
     Plugin 'lyokha/vim-xkbswitch'                       " This plugin used to switch keyboard layout back and forth when entering and leaving Insert mode.
     Plugin 'Asheq/close-buffers.vim'                    " This plug-in allows you to quickly bdelete several buffers at once.
-    Plugin 'jiangmiao/auto-pairs'                       " Insert or delete brackets, parens, quotes in pair.
+    Plugin 'Raimondi/delimitMate'                       " Insert or delete brackets, parens, quotes in pair.
     Plugin 'frazrepo/vim-rainbow'                       " Rainbow of brackets
 
     " All of your Plugins must be added before the following line
@@ -154,11 +154,10 @@
     autocmd FileType c,cc,cpp,h,hpp,s,tex call rainbow#load()
     let g:rainbow_ctermfgs = ['Yellow', 'Yellow', 'Brown', 'DarkMagenta']
 
-    " Plugin 'Auto-Pairs'
-    " Skip closing brakets before a word
-    " https://github.com/jiangmiao/auto-pairs/issues/117
-    " Workaround via fast delete unnecessary brackets over Ctrl+d
-    inoremap <C-d> <Del>
+    " Plugin 'delimitMate'
+    let g:delimitMate_expand_space = 1
+    let g:delimitMate_expand_cr = 1
+    let g:delimitMate_jump_expansion = 1
 " }}}
 
 if has("gui_running")
