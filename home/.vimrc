@@ -36,6 +36,7 @@
     Plugin 'Asheq/close-buffers.vim'                    " This plug-in allows you to quickly bdelete several buffers at once.
     Plugin 'Raimondi/delimitMate'                       " Insert or delete brackets, parens, quotes in pair.
     Plugin 'frazrepo/vim-rainbow'                       " Rainbow of brackets
+    Plugin 'farmergreg/vim-lastplace'                   " Intelligently reopens files at your last edit position.
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
@@ -345,6 +346,10 @@ augroup cls_syntax_on
   autocmd!
   autocmd BufNewFile,BufRead *.cls set syntax=tex
 augroup END
+
+" LaTeX. Отключение ошибочного выделения символа "_"
+" TODO: Установить VimTeX (Vim должен быть 9.1+)
+autocmd FileType tex syntax clear texOnlyMath
 
 " Set switches spelling
 " http://welinux.ru/post/426/
