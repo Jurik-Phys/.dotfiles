@@ -516,7 +516,7 @@ set showtabline=2
 " Цветовая индикация столбца ограничителя
 " Мягкое ограничение ширины строк исходого кода
 autocmd BufEnter *.c,*.cpp,*.h,*.hpp setlocal colorcolumn=81
-autocmd BufEnter *.tex setlocal colorcolumn=121
+autocmd BufEnter *.tex,*.cls setlocal colorcolumn=121
 
 " Настройка отладчика (загрузка плагина, расположение окон) -->
 autocmd FileType c,cc,cpp,h,hpp,s packadd termdebug
