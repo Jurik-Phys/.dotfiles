@@ -109,7 +109,11 @@
     silent! map <F2> :NERDTreeFind<CR>              " Find directory in NERDTree with current file
     silent! map <F3> :NERDTreeToggle<CR>            " Toggle NERDTree panel
     let NERDTreeShowHidden=1
-    let NERDTreeIgnore=['^moc_', '\.o$']
+    "Hide work files:
+        " C/C++
+         let NERDTreeIgnore=['^moc_', '\.o$']
+        " LaTeX
+        let NERDTreeIgnore+=['\.aux$', '\.xdv$', '\.toc$', '\.run.xml$','\.out$','\.bbl$', '\.bcf$', '\.blg$', '\.fdb_latexmk$', '\.fls$', 'xelatex.log']
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
     " Plugin 'Yggdroot/indentLine'
