@@ -76,33 +76,15 @@
         let g:ale_c_cc_options = '-std=c11 -Wall'
         let g:ale_cpp_cc_options = '-std=gnu++1z -Wall'
         let g:ale_cpp_parse_headers = 0
+        " compile_commands.json over 'set(CMAKE_EXPORT_COMPILE_COMMANDS ON)'
+        " Find 'compile_commands.json' into 'build' directory
+        let g:ale_cpp_clangd_options = '--compile-commands-dir=build'
         " Hardcoded include path for same projects:
             let options   = ''
-            " Find header files in "./src" project directory
+            " Find header files in './src' project directory
             let options ..= '-I./src '
-            " MicroTeX library include
-            let options ..= '-I./ext/MicroTeX '
             " MPICH Project
             let options ..= '-I/usr/include/x86_64-linux-gnu/mpich '
-            " Local Qt6
-            let options ..= '-I/opt/Qt/6.4.1/gcc_64/include -I/opt/Qt/6.4.1/gcc_64/include/QtWidgets -I/opt/Qt/6.4.1/gcc_64/include/QtGui -I/opt/Qt/6.4.1/gcc_64/include/QtCore '
-            " System wide Qt5
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtConcurrent '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtCore '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtDBus '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtGui '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtNetwork '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtOpenGLExtensions '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtPlatformHeaders '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtQuickControls2 '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtQuickTemplates2 '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtSql '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtTest '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtWidgets '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras '
-            let options ..= '-I/usr/include/x86_64-linux-gnu/qt5/QtXml '
             let g:ale_cpp_cc_options = options
 
     " Plugin 'preservim/nerdtree'
