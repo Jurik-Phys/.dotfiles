@@ -94,7 +94,7 @@
     let NERDTreeShowHidden=1
     "Hide work files:
         " C/C++
-         let NERDTreeIgnore=['^moc_', '\.o$']
+         let NERDTreeIgnore=['^moc_', '\.o$', 'tags.lock', 'tags', 'tags.temp']
         " LaTeX
         let NERDTreeIgnore+=['\.aux$', '\.xdv$', '\.toc$', '\.run.xml$','\.out$','\.bbl$', '\.bcf$', '\.blg$', '\.fdb_latexmk$', '\.fls$', 'xelatex.log']
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
