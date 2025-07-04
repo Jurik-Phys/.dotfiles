@@ -37,6 +37,7 @@
     Plugin 'Raimondi/delimitMate'                       " Insert or delete brackets, parens, quotes in pair.
     Plugin 'frazrepo/vim-rainbow'                       " Rainbow of brackets
     Plugin 'farmergreg/vim-lastplace'                   " Intelligently reopens files at your last edit position.
+    Plugin 'preservim/tagbar'                           " Easy way to browse the tags of the current file and get an overview of its structure
 
     " All of your Plugins must be added before the following line
     if iCanHazVundle == 0
@@ -145,6 +146,9 @@
     let g:delimitMate_expand_space = 1
     let g:delimitMate_expand_cr = 1
     let g:delimitMate_jump_expansion = 1
+
+    " Plugin 'tagbar'
+    nmap <F4> :TagbarToggle<CR>
 " }}}
 
 if has("gui_running")
@@ -279,8 +283,8 @@ autocmd FileType javascript,javascriptreact,css,scss,jsx set tabstop=2 | set shi
 
 " Меню для перекодировки текста
 " http://www.opennet.ru/base/rus/vim_rus_text.txt.html
-" <F8> Change encoding
-" <F8> File encoding for open
+" <F6> Change encoding
+" <F6> File encoding for open
 " ucs-2le - MS Windows unicode encoding
 set  wildmenu
 set  wcm=<Tab>
@@ -289,7 +293,7 @@ menu Encoding.KOI8-R     :FencManualEncoding koi8-r<CR>
 menu Encoding.CP866      :FencManualEncoding cp866<CR>
 menu Encoding.UTF-8      :FencManualEncoding utf-8<CR>
 menu Encoding.UCS-2LE    :FencManualEncoding ucs-2le<CR>
-map  <F8> :emenu Encoding.<Tab>
+map  <F6> :emenu Encoding.<Tab>
 
 function! EnFilePosition()
     let total_lines = line('$')
@@ -351,11 +355,12 @@ menu Spell.word_wrong zw
 menu Spell.word_ignore zG
 
 
-nmap <F4> z=<CR>
-imap <F4> <Esc>z=<CR>
 
 imap <F7> <Esc>:set spell!<CR>
 nmap <F7> :set spell!<CR>
+
+nmap <F8> z=
+imap <F8> <Esc>z=
 
 imap <C-F7> <Esc>:emenu Spell.<TAB>
 nmap <C-F7> :emenu Spell.<TAB>
