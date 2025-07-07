@@ -148,7 +148,8 @@
     let g:delimitMate_jump_expansion = 1
 
     " Plugin 'tagbar'
-    nmap <F4> :TagbarToggle<CR>
+    nmap <S-F4> :TagbarToggle<CR>
+    nmap <F4> :TagbarOpen j<CR>
 " }}}
 
 if has("gui_running")
