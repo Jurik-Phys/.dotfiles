@@ -131,6 +131,8 @@
       \ },
       \ })
     call ddc#enable()
+    " Fix strange line jump after insert into end of line
+    set completeopt=menu,preview,noinsert
 
     " Plugin vim-xkbswitch
     " It requires OS dependent keyboard layout switcher
