@@ -585,8 +585,6 @@ augroup GnuPGExtra
     autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
     " Disable IndentLine plugin
     autocmd BufReadCmd,FileReadCmd *.\(gpg\|asc\|pgp\) let g:indentLine_enabled = 0
-    " Reload colorscheme to workaround black & green color
-    autocmd User GnuPG colorscheme wombat
 augroup END
 
 function SetGPGOptions()
