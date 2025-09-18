@@ -143,6 +143,7 @@
     syntax on
     autocmd FileType c,cc,cpp,h,hpp,s,tex call rainbow#load()
     let g:rainbow_ctermfgs = ['Yellow', 'Yellow', 'Brown', 'DarkMagenta']
+    let g:rainbow_guifgs = ['Yellow', 'Yellow', '#af5f00', '#b218b2']
 
     " Plugin 'delimitMate'
     let g:delimitMate_expand_space = 1
@@ -150,55 +151,103 @@
     let g:delimitMate_jump_expansion = 1
 
     " Plugin 'tagbar'
+    let g:tagbar_sort = 0
     nmap <S-F4> :TagbarToggle<CR>
     nmap <F4> :TagbarOpen j<CR>
+
 " }}}
 
 if has("gui_running")
-    set guioptions+=b
-    colorscheme torte " evening " spring " wombat " wombat " Цветовая схема
-    set guifont=Terminal\ 10 " fixed " Шрифт
-else
-    " Перезапсь цветов цветовой схемы
-    " ()
-    " https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
-    augroup MyColors
-        autocmd!
-        autocmd ColorScheme * hi StatusLine   ctermfg=DarkGray     ctermbg=Yellow
-                          \ | hi StatusLineNC ctermfg=DarkGray     ctermbg=White
-                          \ | hi VertSplit    ctermfg=DarkGray
-                          \ | hi Folded       ctermfg=LightCyan    ctermbg=DarkGray
-                          \ | hi Keyword      ctermfg=Brown
-                          \ | hi Function     ctermfg=Yellow
-                          \ | hi String       ctermfg=Yellow
-                          \ | hi Normal       ctermfg=DarkGreen    ctermbg=Black
-                          \ | hi Keyword      ctermfg=LightCyan
-                          \ | hi Statement    ctermfg=Yellow
-                          \ | hi Constant     ctermfg=DarkMagenta
-                          \ | hi Number       ctermfg=DarkMagenta
-                          \ | hi PreProc      ctermfg=DarkMagenta
-                          \ | hi Identifier   ctermfg=Yellow
-                          \ | hi Type         ctermfg=Brown
-                          \ | hi Special      ctermfg=LightGray
-                          \ | hi Comment      ctermfg=DarkCyan
-                          \ | hi Todo         ctermfg=DarkMagenta  ctermbg=Black
-                          \ | hi MatchParen   ctermfg=LightGray    ctermbg=DarkGray
-                          \ | hi Pmenu        ctermfg=White        ctermbg=DarkGray
-                          \ | hi PmenuSel     ctermfg=Black        ctermbg=LightGray
-                          \ | hi PmenuSbar                         ctermbg=DarkGray
-                          \ | hi PmenuThumb                        ctermbg=LightGray
-                          \ | hi TabLineSel   ctermfg=White        ctermbg=237
-                          \ | hi TabLineFill  ctermfg=DarkGray
-                          \ | hi TabLine      ctermfg=Yellow                         cterm=none
-                          \ | hi Visual                            ctermbg=DarkGray
-                          \ | hi CursorLine                        ctermbg=DarkGray  cterm=none
-                          \ | hi ColorColumn                       ctermbg=017
-                          \ | hi Directory    ctermfg=DarkCyan
-                          \ | hi NERDTreeDirSlash  ctermfg=DarkCyan
-                          \ | hi NERDTreeCWD ctermfg=LightGray
-    augroup END
-    colorscheme wombat
+    set guifont=Terminus\ \(TTF\)\ 12
 endif
+
+" Настройка цветовой схемы (terminal & gui)
+augroup MyColors
+    autocmd!
+    autocmd VimEnter    * hi StatusLine       ctermfg=DarkGray     ctermbg=Yellow
+                      \                         guifg=#ffff54        guibg=#6c6c6c     gui=none
+                      \ | hi StatusLineNC     ctermfg=DarkGray     ctermbg=White
+                      \                         guifg=#6c6c6c        guibg=White
+                      \ | hi LineNr           ctermfg=Yellow
+                      \                         guifg=#ffff54
+                      \ | hi SignColumn       ctermbg=DarkGray
+                      \                         guibg=#6c6c6c                           gui=none
+                      \ | hi VertSplit        ctermfg=DarkGray
+                      \                         guifg=#6c6c6c
+                      \ | hi Folded           ctermfg=LightCyan    ctermbg=DarkGray
+                      \                         guifg=#54ffff        guibg=#6c6c6c
+                      \ | hi Keyword          ctermfg=LightCyan
+                      \                         guifg=#54ffff
+                      \ | hi Function         ctermfg=Yellow
+                      \                         guifg=#ffff54
+                      \ | hi String           ctermfg=Yellow
+                      \                         guifg=#ffff54
+                      \ | hi Normal           ctermfg=DarkGreen    ctermbg=Black
+                      \                         guifg=#18b218          guibg=#272727
+                      \ | hi Statement        ctermfg=Yellow
+                      \                         guifg=#ffff54                           gui=none
+                      \ | hi Constant         ctermfg=DarkMagenta
+                      \                         guifg=#b218b2
+                      \ | hi Number           ctermfg=DarkMagenta
+                      \                         guifg=#b218b2
+                      \ | hi PreProc          ctermfg=DarkMagenta
+                      \                         guifg=#b218b2
+                      \ | hi Identifier       ctermfg=Yellow
+                      \                         guifg=#ffff54
+                      \ | hi Type             ctermfg=Brown
+                      \                         guifg=#af5f00                          gui=none
+                      \ | hi Special          ctermfg=LightGray
+                      \                         guifg=LightGray
+                      \ | hi Comment          ctermfg=DarkCyan
+                      \                         guifg=#18b2b2
+                      \ | hi Todo             ctermfg=DarkMagenta  ctermbg=Black
+                      \                         guifg=#b218b2        guibg=#272727
+                      \ | hi MatchParen       ctermfg=LightGray    ctermbg=DarkGray
+                      \                         guifg=#f6f3e8        guibg=#857b6f
+                      \ | hi Pmenu            ctermfg=White        ctermbg=DarkGray
+                      \                         guifg=#f6f3e8        guibg=#444444
+                      \ | hi PmenuSel         ctermfg=Black        ctermbg=LightGray
+                      \                         guifg=#000000        guibg=#f6f3e8
+                      \ | hi PmenuSbar                             ctermbg=DarkGray
+                      \ | hi PmenuThumb                            ctermbg=LightGray
+                      \ | hi TabLineSel       ctermfg=White        ctermbg=237
+                      \ | hi TabLineFill      ctermfg=DarkGray
+                      \ | hi TabLine          ctermfg=Yellow                         cterm=none
+                      \ | hi Visual                                ctermbg=DarkGray
+                      \                                              guibg=#6c6c6c
+                      \ | hi CursorLine       ctermfg=White        ctermbg=DarkGray  cterm=none
+                      \                         guifg=#ffffff        guibg=#6c6c6c
+                      \ | hi ColorColumn                           ctermbg=024
+                      \                                              guibg=#053d73
+                      \ | hi NonText          ctermfg=Gray
+                      \                         guifg=#a8a8a8                          gui=none
+                      \ | hi Directory        ctermfg=DarkCyan
+                      \                         guifg=#18b2b2
+                      \ | hi NERDTreeDirSlash ctermfg=DarkCyan
+                      \                         guifg=#18b2b2
+                      \ | hi NERDTreeCWD      ctermfg=LightGray
+                      \                         guifg=#dedede
+                      \ | hi TagbarScope       ctermfg=LightCyan   ctermbg=none
+                      \                         guifg=#54ffff                          gui=none
+                      \ | hi TagbarFoldIcon   ctermfg=LightCyan    ctermbg=none
+                      \                         guifg=#54ffff                          gui=none
+                      \ | hi TagbarType       ctermfg=Brown
+                      \                         guifg=#af5f00                          gui=none
+                      \ | hi TagbarNestedKind ctermfg=DarkMagenta  ctermbg=none
+                      \                         guifg=#b218b2                          gui=none
+                      \ | hi TagbarKind       ctermfg=LightCyan    ctermbg=none
+                      \                         guifg=#54ffff                          gui=none
+                      \ | hi TagbarHighlight  ctermfg=Yellow       ctermbg=none
+                      \                         guifg=#ffff54                          gui=none
+                      \ | hi TagbarSignature  ctermfg=Gray         ctermbg=none
+                      \                         guifg=#a8a8a8                          gui=none
+                      \ | hi TagbarVisibilityPublic    ctermfg=DarkGray
+                      \                                  guifg=#6c6c6c                 gui=none
+                      \ | hi TagbarVisibilityPrivate   ctermfg=DarkGray
+                      \                                  guifg=#6c6c6c                 gui=none
+                      \ | hi TagbarVisibilityProtected ctermfg=DarkGray
+                      \                                guifg=#6c6c6c                   gui=none
+augroup END
 
 " Навигация межд окнами через Ctrl + hjkl
 " A) нормальный режим
@@ -576,7 +625,7 @@ function MyFoldText()
 endfunction
 
 " Mark last spaces on line
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=Red guibg=#ff3622
 match ExtraWhitespace /\s\+$/
 au BufWinEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
