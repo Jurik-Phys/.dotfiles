@@ -1,3 +1,7 @@
+" VIM first run
+" - install font Termins (TTF)
+"   > apt install fonts-terminus
+
 " Setting up Vundle - the vim plugin bundler {{{
     let iCanHazVundle=1
     let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
@@ -158,7 +162,13 @@
 " }}}
 
 if has("gui_running")
-    set guifont=Terminus\ \(TTF\)\ 12
+    if !empty(system("fc-list | grep -i 'Terminus (TTF)'"))
+        set guifont=Terminus\ \(TTF\)\ 12
+    elseif !empty(system("fc-list | grep -i 'Noto Mono'"))
+        set guifont=Noto\ Mono\ 12
+    else
+        set guifont=Monospace\ 12
+    endif
 endif
 
 " Настройка цветовой схемы (terminal & gui)
