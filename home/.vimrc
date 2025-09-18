@@ -1,74 +1,84 @@
-" VIM first run
-" - install font Termins (TTF)
-"   root:~# apt install fonts-terminus
-" - install JavaScript runtime "Deno"
-"   root:~# apt install curl
-"   user:~$ curl -fsSL https://deno.land/install.sh | sh
-" - install spell dictionary into vim
-"   > ':set spell' or '<F7>'
+" // *** VIM first run *** //
+" install font Termins (TTF):
+"     root:~# apt install fonts-terminus
+" install JavaScript runtime "Deno":
+"     root:~# apt install curl
+"     user:~$ curl -fsSL https://deno.land/install.sh | sh
+"                                  or
+"     user:~$ curl -fsSL https://deno.land/install.sh | sh -s -- "v2.5.1"
+" install spell dictionary into vim:
+"     > ':set spell' or '<F7>'
+" build & install xkb-switch:
+"     root:~# apt install libxkbfile-dev
+"     user:~$ wget -O xkb-switch.zip https://github.com/sergei-mironov/xkb-switch/archive/refs/heads/master.zip
+"     user:~$ unzip xkb-switch.zip
+"     user:~$ cd xkb-switch-master
+"     user:~$ mkdir build && cd build
+"     user:~$ cmake ..
+"     user:~$ cmake --build . --parallel
+"     user:~$ make DESTDIR=$HOME/.vim/xkb-switch/ install
+" install ctags:
+"     root:~# apt install universal-ctags
+" // * * * * * * * * * * * //
 
-" Setting up Vundle - the vim plugin bundler {{{
-    let iCanHazVundle=1
-    let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
-    if !filereadable(vundle_readme)
-        echo "Installing Vundle.."
-        echo ""
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
-        let iCanHazVundle=0
-    endif
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#begin()
-    " Let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
+" Auto-install the plugin manager "Vim-Plug"
+if !filereadable(expand('~/.vim/autoload/plug.vim'))
+    silent !mkdir -p ~/.vim/autoload
+    silent !wget -q -O ~/.vim/autoload/plug.vim
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-    " Add your bundles here
-    Plugin 'dense-analysis/ale'                         " Asynchronous Lint Engine /Syntax and errors highlighter/
-    Plugin 'https://github.com/tpope/vim-fugitive'      " So awesome, it should be illegal
-    Plugin 'https://github.com/preservim/nerdtree'      " The NERDTree is a file system explorer for the Vim editor
-    Plugin 'https://github.com/Yggdroot/indentLine'     " Displaying thin vertical lines at each indentation level
-    Plugin 'https://github.com/sheerun/vim-polyglot'    " A collection of language packs for Vim
-    Plugin 'ludovicchabant/vim-gutentags'               " It will re-generate tag files as you work while staying completely out of your way.
-    Plugin 'Shougo/ddc.vim'                             " Dark deno-powered completion /ddc.vim/ framework for neovim/Vim
-    Plugin 'vim-denops/denops.vim'                      " Denops is ecosystem of Vim/Neovim which allows developers to write plugins in Deno
-    Plugin 'Shougo/ddc-ui-native'                       " /UI/ Native popup menu UI for ddc.vim
-    Plugin 'Shougo/ddc-source-around'                   " /Source/ Around completion for ddc.vim
-    Plugin 'matsui54/ddc-buffer'                        " /Source/ Collects keywords from current buffer, buffers whose window is in the same tabpage and other
-    Plugin 'delphinus/ddc-ctags'                        " /Source/ Universal Ctags completion for ddc.vim
-    Plugin 'Shougo/ddc-filter-converter_remove_overlap' " /Filter/ The filter removes overlapped text in a candidate's word.
-    Plugin 'tani/ddc-fuzzy'                             " /Filter/ Fuzzy matching filters for ddc.vim.
-    Plugin 'ervandew/supertab'                          " Supertab is a plugin which allows you to perform all your insert completion
-    Plugin 'jamessan/vim-gnupg'                         " This script implements transparent editing of gpg encrypted files
-    Plugin 'lyokha/vim-xkbswitch'                       " This plugin used to switch keyboard layout back and forth when entering and leaving Insert mode.
-    Plugin 'Asheq/close-buffers.vim'                    " This plug-in allows you to quickly bdelete several buffers at once.
-    Plugin 'Raimondi/delimitMate'                       " Insert or delete brackets, parens, quotes in pair.
-    Plugin 'frazrepo/vim-rainbow'                       " Rainbow of brackets
-    Plugin 'farmergreg/vim-lastplace'                   " Intelligently reopens files at your last edit position.
-    Plugin 'preservim/tagbar'                           " Easy way to browse the tags of the current file and get an overview of its structure
-
-    " All of your Plugins must be added before the following line
-    if iCanHazVundle == 0
-        echo "Installing Vundles, please ignore key map error messages"
-        echo ""
-        :PluginInstall
-    endif
-
-    call vundle#end()             " required
-    filetype plugin indent on     " required
-    " To ignore plugin indent changes, instead use:
-    "filetype plugin on
-    "
-    " Brief help
-    "   :PluginList       - lists configured plugins
-    "   :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-    "   :PluginSearch foo - searches for foo; append `!` to refresh local cache
-    "   :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-    " see :h vundle for more details or wiki for FAQ
-" }}}
+" List of favorite plugins
+call plug#begin('~/.vim/plugged')
+    Plug 'dense-analysis/ale'                               " Asynchronous Lint Engine /Syntax and errors highlighter/
+    Plug 'shougo/ddc.vim',             { 'tag' : 'v9.4.0'}  " Dark deno-powered completion /ddc.vim/ framework for neovim/Vim
+    Plug 'vim-denops/denops.vim',       {'tag' : 'v7.1.0'}  " Denops is ecosystem of Vim/Neovim which allows developers to write plugins in Deno
+    Plug 'shougo/ddc-ui-native',     {'commit' : '4468325'} " /UI/ Native popup menu UI for ddc.vim
+    Plug 'shougo/ddc-source-around', {'commit' : 'df270c7'} " /Source/ Around completion for ddc.vim
+    Plug 'delphinus/ddc-ctags',      {'commit' : 'f188acf'} " /Source/ Universal Ctags completion for ddc.vim
+    Plug 'matsui54/ddc-buffer',      {'commit' : 'f332e16'} " /Source/ Collects keywords from current buffer, buffers whose window is in the same tabpage and other
+    Plug 'tani/ddc-fuzzy',           {'commit' : 'd6cc18a'} " /Filter/ Fuzzy matching filters for ddc.vim
+    Plug 'shougo/ddc-filter-converter_remove_overlap', {'commit': 'f3b519b'} " /Filter/ The filter removes overlapped text in a candidate's word
+    Plug 'ervandew/supertab'                                " Supertab is a plugin which allows you to perform all your insert completion
+    Plug 'jamessan/vim-gnupg'                               " This script implements transparent editing of gpg encrypted files
+    Plug 'lyokha/vim-xkbswitch'                             " This plugin used to switch keyboard layout back and forth when entering and leaving Insert mode.
+    Plug 'Asheq/close-buffers.vim'                          " This plug-in allows you to quickly bdelete several buffers at once.
+    Plug 'Raimondi/delimitMate'                             " Insert or delete brackets, parens, quotes in pair.
+    Plug 'frazrepo/vim-rainbow'                             " Rainbow of brackets
+    Plug 'farmergreg/vim-lastplace'                         " Intelligently reopens files at your last edit position.
+    Plug 'preservim/tagbar'                                 " Easy way to browse the tags of the current file and get an overview of its structure
+    Plug 'https://github.com/tpope/vim-fugitive'            " The Git plugin for Vim
+    Plug 'https://github.com/preservim/nerdtree'            " The NERDTree is a file system explorer for the Vim editor
+    Plug 'https://github.com/Yggdroot/indentLine'           " Displaying thin vertical lines at each indentation level
+    Plug 'https://github.com/sheerun/vim-polyglot'          " A collection of language packs for Vim
+    Plug 'ludovicchabant/vim-gutentags'                     " It will re-generate tag files as you work while staying completely out of your way.
+call plug#end()
 
 " Block of Plugins config {{{
+    " Check installed ddc.vim plugin before setup
+    if filereadable(expand('~/.vim/plugged/ddc.vim/autoload/ddc.vim'))
+        call ddc#custom#patch_global('ui', 'native')
+        call ddc#custom#patch_global('sources', [ 'ctags', 'around', 'buffer'])
+        call ddc#custom#patch_global('sourceOptions', {
+          \ '_': {
+          \   'matchers': ['matcher_fuzzy'],
+          \   'sorters': ['sorter_fuzzy'],
+          \   'converters': ['converter_fuzzy', 'converter_remove_overlap' ],
+          \ },
+          \ 'around': {
+            \ 'mark' : '[A]',
+          \ },
+          \ 'buffer': {
+            \ 'mark' : '[B]',
+          \ },
+          \   'ctags' : {
+          \ 'mark' : '[C]',
+          \ },
+          \ })
+        call ddc#enable()
+    endif
+
     " Plugin 'vim-denops/denops.vim'
         " [Temporarly workaround for old vim
         " Disable warning "Denops requires Vim 9.1.0448 or Neovim 0.10.0"
@@ -120,32 +130,13 @@
     let g:gutentags_ctags_exclude = [ '.git', 'build', 'depends', 'docs', '.md', '.cache', 'tags', '.css', '.vim' ]
     set tag=./tags,tags;$HOME " Find file with name 'tags' in current dir and upper up-to $HOME
 
-    " Plugin ddc.vim
-    call ddc#custom#patch_global('ui', 'native')
-    call ddc#custom#patch_global('sources', [ 'ctags', 'around', 'buffer'])
-    call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-      \   'matchers': ['matcher_fuzzy'],
-      \   'sorters': ['sorter_fuzzy'],
-      \   'converters': ['converter_fuzzy', 'converter_remove_overlap' ],
-      \ },
-      \ 'around': {
-        \ 'mark' : '[A]',
-      \ },
-      \ 'buffer': {
-        \ 'mark' : '[B]',
-      \ },
-      \   'ctags' : {
-      \ 'mark' : '[C]',
-      \ },
-      \ })
-    call ddc#enable()
     " Fix strange line jump after insert into end of line
     set completeopt=preview
 
     " Plugin vim-xkbswitch
     " It requires OS dependent keyboard layout switcher
     let g:XkbSwitchEnabled = 1
+    let g:XkbSwitchLib="~/.vim/xkb-switch/usr/local/lib/"
 
     " Plugin 'vim-rainbow'
     " Включение подсветки для правильной работы плагина
@@ -164,8 +155,7 @@
     nmap <S-F4> :TagbarToggle<CR>
     nmap <F4> :TagbarOpen j<CR>
 
-" }}}
-
+" GVim fallback font setup
 if has("gui_running")
     if !empty(system("fc-list | grep -i 'Terminus (TTF)'"))
         set guifont=Terminus\ \(TTF\)\ 12
@@ -437,9 +427,7 @@ imap <F8> <Esc>z=
 imap <C-F7> <Esc>:emenu Spell.<TAB>
 nmap <C-F7> :emenu Spell.<TAB>
 
-" Все swap файлы будут помещаться в эту папку
-" set dir=~/.vim/swp
-" Отключить создание swap-файла
+" Disable swapfile
 set noswapfile
 
 " Обычное перемещение (внутри предложения на нес)
@@ -615,17 +603,6 @@ function SetGPGOptions()
     " Hide tabline
     set showtabline=0
 endfunction
-
-" Change the text in folds
-" https://stackoverflow.com/a/5984138
-" function! MyFoldText()
-"    let nl = v:foldend - v:foldstart + 1
-"    let comment = substitute(getline(v:foldstart),"^ *","",1)
-"    let linetext = substitute(getline(v:foldstart+1),"^ *","",1)
-"    let txt = '+ ' . linetext . ' : "' . comment . '" : length ' . nl
-"    return txt
-" endfunction
-" set foldtext=MyFoldText()
 
 " https://vi.stackexchange.com/a/4650
 set foldtext=MyFoldText()
