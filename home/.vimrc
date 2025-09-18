@@ -1,6 +1,11 @@
 " VIM first run
 " - install font Termins (TTF)
-"   > apt install fonts-terminus
+"   root:~# apt install fonts-terminus
+" - install JavaScript runtime "Deno"
+"   root:~# apt install curl
+"   user:~$ curl -fsSL https://deno.land/install.sh | sh
+" - install spell dictionary into vim
+"   > ':set spell' or '<F7>'
 
 " Setting up Vundle - the vim plugin bundler {{{
     let iCanHazVundle=1
@@ -212,6 +217,12 @@ augroup MyColors
                       \                         guifg=#18b2b2
                       \ | hi Todo             ctermfg=DarkMagenta  ctermbg=Black
                       \                         guifg=#b218b2        guibg=#272727
+                      \ | hi SpellBad         ctermfg=DarkRed      ctermbg=Black     cterm=none
+                      \                         guifg=#ff3622        guibg=#272727     gui=none
+                      \ | hi SpellCap         ctermfg=LightGreen   ctermbg=Black
+                      \                         guifg=#87ffaf        guibg=#272727     gui=none
+                      \ | hi SpellLocal       ctermfg=DarkGreen    ctermbg=Black
+                      \                         guifg=#18b218        guibg=#272727
                       \ | hi MatchParen       ctermfg=LightGray    ctermbg=DarkGray
                       \                         guifg=#f6f3e8        guibg=#857b6f
                       \ | hi Pmenu            ctermfg=White        ctermbg=DarkGray
@@ -403,10 +414,11 @@ augroup END
 " TODO: Установить VimTeX (Vim должен быть 9.1+)
 autocmd FileType tex syntax clear texOnlyMath
 
-" Set switches spelling
-" http://welinux.ru/post/426/
-" словари тут: ftp://ftp.vim.org/pub/vim/runtime/spell/
-set spell spelllang=ru,en
+" При активации проверки орфографии
+" через ':set spell' или '<F7>'
+" и отсутствии требуемых словарей
+" будет предложено их скачать
+set spelllang=ru,en
 set wildmenu
 set wcm=<Tab>
 menu Spell.words z=
@@ -416,8 +428,6 @@ menu Spell.word_good zg
 menu Spell.word_wrong zw
 menu Spell.word_ignore zG
 
-
-
 imap <F7> <Esc>:set spell!<CR>
 nmap <F7> :set spell!<CR>
 
@@ -426,15 +436,6 @@ imap <F8> <Esc>z=
 
 imap <C-F7> <Esc>:emenu Spell.<TAB>
 nmap <C-F7> :emenu Spell.<TAB>
-set nospell
-
-highlight clear SpellBad
-highlight SpellBad  ctermfg=yellow
-highlight clear SpellCap
-highlight SpellCap ctermfg=Blue
-
-highlight clear SpellLocal
-highlight SpellLocal ctermfg=Green
 
 " Все swap файлы будут помещаться в эту папку
 " set dir=~/.vim/swp
