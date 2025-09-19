@@ -1,0 +1,14 @@
+/* Скрывать крестик на всех вкладках */
+.tab .close {
+    display: none !important;
+}
+
+/* Показывать только на активной */
+.tab.active .close {
+    display: flex !important; /* или inline-flex в зависимости от версии */
+}
+
+/* Показывать крестик на неактивных вкладках только при наведении */
+.tab:not(.active):hover .close {
+    display: flex !important;
+}
