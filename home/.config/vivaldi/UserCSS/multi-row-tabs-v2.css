@@ -8,14 +8,14 @@
  *******************/
   :root {
     /* That will be the minimum and maximum width of a tab */
-    --mrt-min-width: 100px;
-    --mrt-max-width: 200px;
+    --mrt-min-width: 130px;
+    --mrt-max-width: 130px;
 
     /* Change to 'true' to enable scrollbars for tabs
        Works better with 'Use Simple Scrollbars' enabled and 'Switch Tabs by Scrolling' disabled in Vivaldi settings */
-    --mrt-scrollbars: false;
+    --mrt-scrollbars: true;
     /* Maximum row count after which scrollbars appear if enabled on the previous line */
-    --mrt-max-rows: 2.5;
+    --mrt-max-rows: 4.5;
 
     /* Change to 'true' to hide window control buttons and stretch tabs to full window width */
     --mrt-full-width: false;
@@ -36,8 +36,8 @@
   }
   #tabs-subcontainer {
     /* Width of tabs inside of the second level tab bar */
-    --mrt-min-width: 150px;
-    --mrt-max-width: 300px;
+    --mrt-min-width: 130px;
+    --mrt-max-width: 130px;
   }
 /******************/
 
