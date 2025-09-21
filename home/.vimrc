@@ -563,8 +563,7 @@ autocmd BufEnter *.tex,*.cls setlocal colorcolumn=121
 " Настройка отладчика (загрузка плагина, расположение окон) -->
 autocmd FileType c,cc,cpp,h,hpp,s packadd termdebug
 autocmd FileType c,cc,cpp,h,hpp,s cabbrev gdb Termdebug
-let g:termdebug_popup = 0
-let g:termdebug_wide = 1
+let g:termdebug_config = {'wide': 1, 'popup': 0}
 " Настройка отладчика (загрузка плагина, расположение окон) <--
 
 """""""""""""""""""""
