@@ -636,6 +636,3 @@ command! AddBeginEnd execute 'normal ggO' . '<Esc>v^xi' . '// Begin ' . expand('
 " :BuffOnly command for delete all hidden buffers
 " :BuffOnly! for delete hidden buffers with unsaved changes
 command -bang BuffOnly execute ( <bang>0 ? 'Bdelete! hidden' : 'Bdelete hidden' )
-
-" Fix QTerminal Backspace ^H (bug/feature)
-tnoremap <C-h> <BS>
