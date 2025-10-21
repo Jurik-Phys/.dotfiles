@@ -561,12 +561,9 @@ autocmd BufEnter *.c,*.cpp,*.h,*.hpp setlocal colorcolumn=81
 autocmd BufEnter *.tex,*.cls setlocal colorcolumn=121
 
 " >> Настройка отладчика (загрузка плагина, расположение окон)
-augroup termdebug_autostart
-    autocmd!
-    autocmd FileType c,cc,cpp,h,hpp,s packadd termdebug
-    autocmd FileType c,cc,cpp,h,hpp,s cabbrev gdb Termdebug
-    let g:termdebug_config = {'wide': 1, 'popup': 0}
-augroup END
+packadd! termdebug
+let g:termdebug_config = {'wide': 1, 'popup': 0}
+cabbrev gdb Termdebug
 " << Настройка отладчика (загрузка плагина, расположение окон)
 
 """""""""""""""""""""
