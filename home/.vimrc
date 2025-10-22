@@ -171,8 +171,12 @@ augroup MyColors
     autocmd!
     autocmd VimEnter    * hi StatusLine       ctermfg=DarkGray     ctermbg=Yellow
                       \                         guifg=#ffff54        guibg=#6c6c6c     gui=none
+                      \ | hi StatusLineTerm   ctermfg=Yellow       ctermbg=DarkGray
+                      \                         guifg=#6c6c6c        guibg=#ffff54
                       \ | hi StatusLineNC     ctermfg=DarkGray     ctermbg=White
                       \                         guifg=#6c6c6c        guibg=White
+                      \ | hi StatusLineTermNC ctermfg=White        ctermbg=DarkGray
+                      \                         guifg=White          guibg=#6c6c6c
                       \ | hi LineNr           ctermfg=Yellow
                       \                         guifg=#ffff54
                       \ | hi SignColumn       ctermbg=DarkGray
