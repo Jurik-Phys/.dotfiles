@@ -640,4 +640,4 @@ command -bang BuffOnly execute ( <bang>0 ? 'Bdelete! hidden' : 'Bdelete hidden' 
 
 " Remap for classic copy to clipborad
 vnoremap <C-c> "*y :let @+=@*<CR>
-map <C-v> "+P
+map <C-p> "+P
