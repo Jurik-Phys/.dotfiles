@@ -230,7 +230,9 @@ augroup MyColors
                       \ | hi TabLine          ctermfg=Yellow                         cterm=none
                       \ | hi Visual                                ctermbg=DarkGray
                       \                                              guibg=#6c6c6c
-                      \ | hi CursorLine       ctermfg=White        ctermbg=DarkGray  cterm=none
+                      \ | hi CursorLine       ctermfg=none         ctermbg=none      cterm=none
+                      \                         guifg=#ffffff        guibg=#6c6c6c
+                      \ | hi CursorLineNr     ctermfg=Brown        ctermbg=none      cterm=none
                       \                         guifg=#ffffff        guibg=#6c6c6c
                       \ | hi ColorColumn                           ctermbg=024
                       \                                              guibg=#053d73
@@ -335,6 +337,9 @@ set fileencodings=utf-8,cp1251,koi8-r,cp866
 
 " показ номера строки
 set number
+
+" Выделение текущего номера строки
+set cursorline
 
 " заменить табулятор на пробелы
 set expandtab
