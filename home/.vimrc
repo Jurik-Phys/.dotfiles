@@ -152,7 +152,18 @@ call plug#end()
 
     " Plugin 'tagbar'
     let g:tagbar_sort = 0
-    nmap <S-F4> :TagbarToggle<CR>
+    function! ToggleTagbar()
+        if exists("g:loaded_tagbar") && tagbar#IsOpen()
+            TagbarClose
+        else
+            TagbarOpen j
+            let winnr = bufwinnr('__Tagbar__')
+            if winnr != -1
+                execute winnr . 'wincmd w'
+            endif
+        endif
+    endfunction
+    nmap <S-F4> :call ToggleTagbar()<CR>
     nmap <F4> :TagbarOpen j<CR>
 
 " GVim fallback font setup
