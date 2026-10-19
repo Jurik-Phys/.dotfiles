@@ -654,6 +654,20 @@ command! AddBeginEnd execute 'normal ggO' . '<Esc>v^xi' . '// Begin ' . expand('
 " :BuffOnly! for delete hidden buffers with unsaved changes
 command -bang BuffOnly execute ( <bang>0 ? 'Bdelete! hidden' : 'Bdelete hidden' )
 
-" Remap for classic copy to clipborad
-vnoremap <C-c> "*y :let @+=@*<CR>
-map <C-p> "+P
+" Copy/paste using system clipboard or OSC 52 over SSH
+if has('clipboard')
+    " Local Vim with clipboard support
+    " Remap for classic copy to clipborad
+    vnoremap <C-c> "*y :let @+=@*<CR>
+    map <C-p> "+P
+else
+    " Remote Vim without clipboard support: copy via OSC 52
+    function! CopyViaOSC52() abort
+        let l = getreg('"')
+        let l = system('base64 -w0', l)
+        let l = substitute(l, '\n', '', 'g')
+        call writefile(["\x1b]52;c;" . l . "\x07"], '/dev/tty', 'b')
+    endfunction
+
+    vnoremap <C-C> y:call CopyViaOSC52()<CR>
+endif
