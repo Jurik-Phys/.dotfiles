@@ -655,7 +655,7 @@ command! AddBeginEnd execute 'normal ggO' . '<Esc>v^xi' . '// Begin ' . expand('
 command -bang BuffOnly execute ( <bang>0 ? 'Bdelete! hidden' : 'Bdelete hidden' )
 
 " Copy/paste using system clipboard or OSC 52 over SSH
-if !exists('$SSH_TTY')
+if !exists('$SSH_TTY') || !has('clipboard')
     " Local Vim with clipboard support
     " Remap for classic copy to clipborad
     vnoremap <C-c> "*y :let @+=@*<CR>
