@@ -663,10 +663,18 @@ if !exists('$SSH_TTY') || !has('clipboard')
 else
     " Remote Vim without clipboard support: copy via OSC 52
     function! CopyViaOSC52() abort
-        let l = getreg('"')
-        let l = system('base64 -w0', l)
-        let l = substitute(l, '\n', '', 'g')
-        call writefile(["\x1b]52;c;" . l . "\x07"], '/dev/tty', 'b')
+        let l:text = getreg('"')
+        let l:base64 = system('base64 -w0', l:text)
+        let l:base64 = substitute(l:base64, '\n', '', 'g')
+
+        let l:osc52 = "\x1b]52;c;" . l:base64 . "\x07"
+
+        " Add DCS (device control string) for copy from 'screen'
+        if $TERM =~# '^screen'
+            let l:osc52 = "\x1bP" . l:osc52 . "\x1b\\"
+        endif
+
+        call writefile([l:osc52], '/dev/tty', 'b')
     endfunction
 
     vnoremap <C-C> y:call CopyViaOSC52()<CR>
