@@ -657,7 +657,7 @@ command -bang BuffOnly execute ( <bang>0 ? 'Bdelete! hidden' : 'Bdelete hidden' 
 " Copy/paste using system clipboard or OSC 52 over SSH
 if !exists('$SSH_TTY') || !has('clipboard')
     " Local Vim with clipboard support
-    " Remap for classic copy to clipborad
+    " Remap for classic copy to clipboard
     vnoremap <C-c> "*y :let @+=@*<CR>
     map <C-p> "+P
 else
@@ -667,14 +667,27 @@ else
         let l:base64 = system('base64 -w0', l:text)
         let l:base64 = substitute(l:base64, '\n', '', 'g')
 
-        let l:osc52 = "\x1b]52;c;" . l:base64 . "\x07"
-
         " Add DCS (device control string) for copy from 'screen'
         if $TERM =~# '^screen'
-            let l:osc52 = "\x1bP" . l:osc52 . "\x1b\\"
+            " Split long payload into smaller chunks
+            let l:chunks = []
+            let l:pos = 0
+
+            while l:pos < strlen(l:base64)
+                call add(l:chunks, strpart(l:base64, l:pos, 76))
+                let l:pos += 76
+            endwhile
+
+            let l:separator = "\x1b\\\x1bP"
+            let l:sequence = "\x1bP\x1b]52;c;" .
+                        \ join(l:chunks, l:separator) .
+                        \ "\x07\x1b\\"
+        else
+            " Regular OSC 52
+            let l:sequence = "\x1b]52;c;" . l:base64 . "\x07"
         endif
 
-        call writefile([l:osc52], '/dev/tty', 'b')
+        call writefile([l:sequence], '/dev/tty', 'b')
     endfunction
 
     vnoremap <C-C> y:call CopyViaOSC52()<CR>
